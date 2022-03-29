@@ -1,0 +1,64 @@
+{
+  "name": "leantable",
+  "version": "0.1.0",
+  "description": "A fast, extensible table component",
+  "keywords": [
+    "table",
+    "grid",
+    "react",
+    "component",
+    "solid",
+    "solidjs"
+  ],
+  "author": "erictooth",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erictooth/leantable.git"
+  },
+  "homepage": "https://github.com/erictooth/leantable",
+  "bugs": {
+    "url": "https://github.com/erictooth/leantable/issues"
+  },
+  "files": [
+    "dist-cjs",
+    "dist-esm",
+    "dist-types"
+  ],
+  "main": "./dist-cjs/index.js",
+  "module": "./dist-esm/index.js",
+  "types": "./dist-types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist-esm/index.js",
+      "require": "./dist-cjs/index.js"
+    },
+    "./plugins": {
+      "import": "./dist-esm/plugins/index.js",
+      "require": "./dist-cjs/plugins/index.js"
+    },
+    "./element": {
+      "import": "./dist-esm/element/index.js",
+      "require": "./dist-cjs/element/index.js"
+    }
+  },
+  "dependencies": {
+    "solid-js": "^1.3.12"
+  },
+  "devDependencies": {
+    "@erictooth/eslint-config": "^8",
+    "chokidar-cli": "^3.0.0",
+    "esbuild": "^0.14.25",
+    "esbuild-plugin-solid": "^0.4.2",
+    "eslint": "^8",
+    "glob": "^7.2.0",
+    "prettier": "~2.5",
+    "typescript": "~4.6"
+  },
+  "workspaces": [
+    "demo"
+  ],
+  "scripts": {
+    "prepack": "make prepack"
+  }
+}

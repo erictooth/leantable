@@ -1,0 +1,13 @@
+:root {
+  font-family: "Inter";
+}
+
+.lean-table--grid-layout {
+  display: grid;
+}
+.lean-table--grid-layout .lean-table__header,
+.lean-table--grid-layout .lean-table__body,
+.lean-table--grid-layout .lean-table__header-row,
+.lean-table--grid-layout .lean-table__body-row {
+  display: contents;
+}

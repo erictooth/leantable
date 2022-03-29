@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@web/dev-server": "^0.1.30",
+    "@web/dev-server-esbuild": "^0.2.16",
+    "leantable": "workspace:*",
+    "preact": "^10.6.6",
+    "smart-resource": "^0.0.4"
+  }
+}
