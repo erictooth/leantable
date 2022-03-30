@@ -7,6 +7,7 @@ import {
   columnSorting,
   gridLayout,
   rowSelection,
+  columnPinning,
 } from "../dist-esm/plugins";
 import { SmartResource } from "smart-resource";
 import { useResourceSnapshot } from "../node_modules/smart-resource/dist-esm/preact.js";
@@ -28,12 +29,16 @@ const columns = [
 ];
 
 const userTable = createTable({
-  plugins: [columnHiding(), columnSorting(), rowSelection(), gridLayout()],
+  plugins: [
+    columnPinning(),
+    columnHiding(),
+    columnSorting(),
+    rowSelection(),
+    gridLayout(),
+  ],
 });
 
-createEffect(() => {
-  console.log(userTable.state.hiddenColumns);
-});
+userTable.dispatch({ type: "PIN_COLUMN", id: "body" });
 
 const App = () => {
   const [users] = useResourceSnapshot(usersResource);
