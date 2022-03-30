@@ -19,7 +19,6 @@ export const columnHiding =
         return {
           ...modifiers,
           columns: (columns, state) => {
-            console.log(columns, state.hiddenColumns);
             return modifiers
               .columns(columns, state)
               .filter((column) => !state.hiddenColumns.has(column.id));
