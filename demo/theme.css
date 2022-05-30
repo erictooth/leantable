@@ -1,13 +1,26 @@
 :root {
-  font-family: "Inter";
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 }
 
-.lean-table--grid-layout {
-  display: grid;
+.lean-table__table {
+  border-collapse: collapse;
 }
-.lean-table--grid-layout .lean-table__header,
-.lean-table--grid-layout .lean-table__body,
-.lean-table--grid-layout .lean-table__header-row,
-.lean-table--grid-layout .lean-table__body-row {
-  display: contents;
+
+.lean-table__header-cell {
+  text-align: left;
+}
+
+.lean-table__header-cell,
+.lean-table__body-cell {
+  background: white;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.lean-table__body-row:hover .lean-table__body-cell {
+  background: #e9f5f9 !important;
+}
+
+.lean-table__body-cell {
+  border-top: 1px solid #eeeef1;
 }
