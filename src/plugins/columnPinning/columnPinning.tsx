@@ -5,7 +5,7 @@ import type {
   PinnedColumnsActions,
   PinnedColumnsState,
 } from "./pinnedColumns.type";
-import type { Column } from "../../core/types/Column";
+import type { Column, ColumnIdentifier } from "../../core/types/Column";
 import clsx from "clsx";
 import { StateContext } from "../../core/context/StateContext";
 import { useSignal } from "../../utils";
@@ -13,8 +13,14 @@ import { createMemo } from "solid-js";
 
 export * from "./pinnedColumns.type";
 
+export type ColumnPinningOptions = {
+  initiallyPinned?: ColumnIdentifier[];
+};
+
 export const columnPinning =
-  (): Plugin<{ pinnedColumns: PinnedColumnsState }, PinnedColumnsActions> =>
+  (
+    columnPinningOptions: ColumnPinningOptions = {}
+  ): Plugin<{ pinnedColumns: PinnedColumnsState }, PinnedColumnsActions> =>
   (baseRenderer) => {
     return {
       ...baseRenderer,
@@ -54,7 +60,10 @@ export const columnPinning =
       },
       reducer: (state, action) => ({
         ...baseRenderer.reducer(state, action),
-        pinnedColumns: pinnedColumnsReducer(state.pinnedColumns, action),
+        pinnedColumns: pinnedColumnsReducer(
+          state.pinnedColumns || new Set(columnPinningOptions.initiallyPinned),
+          action
+        ),
       }),
       modifyConfig: (modifiedConfig) => {
         const modifiers = baseRenderer.modifyConfig(modifiedConfig);

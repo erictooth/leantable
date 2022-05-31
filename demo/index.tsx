@@ -7,6 +7,7 @@ import {
   gridLayout,
   rowSelection,
   columnPinning,
+  rowSelectionCheckboxColumnId,
 } from "../src/plugins";
 import { SmartResource } from "smart-resource";
 import { useResourceSnapshot } from "smart-resource/dist-esm/react.js";
@@ -27,7 +28,7 @@ const columns = [
 
 const userTable = createTable({
   plugins: [
-    columnPinning(),
+    columnPinning({ initiallyPinned: [rowSelectionCheckboxColumnId, "name"] }),
     columnHiding(),
     columnSorting(),
     rowSelection(),
