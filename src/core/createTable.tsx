@@ -1,5 +1,4 @@
 import * as React from "react";
-import { createRoot } from "solid-js";
 import { createStore } from "solid-js/store";
 import { baseRenderer } from "./baseRenderer";
 import { ConfigContext } from "./context/ConfigContext";
@@ -12,76 +11,74 @@ import type { Row } from "./types/Row";
 import type { TableRenderer } from "./types/TableRenderer";
 
 export const createTable = <S, A>({ plugins }: { plugins: Plugin[] }) => {
-  return createRoot(() => {
-    const renderer: TableRenderer<S, A> = plugins.reduce(
-      (v: TableRenderer<any, any>, f) => f(v),
-      baseRenderer
-    );
+  const renderer: TableRenderer<S, A> = plugins.reduce(
+    (v: TableRenderer<any, any>, f) => f(v),
+    baseRenderer
+  );
 
-    const [state, setState] = createStore(
-      renderer.reducer({} as any, { type: "INITIALIZE" } as any)
-    );
+  const [state, setState] = createStore(
+    renderer.reducer({} as any, { type: "INITIALIZE" } as any)
+  );
 
-    const dispatch = (action: A) => {
-      setState(renderer.reducer(state, action));
-    };
+  const dispatch = (action: A) => {
+    setState(renderer.reducer(state, action));
+  };
 
-    const configModifier = renderer.modifyConfig({
-      columns: (columns) => columns,
-      rows: (rows) => rows,
-    });
-
-    const TableWrapper = (props: { config: Config }) => {
-      const { config } = props;
-      const columns = React.useMemo(() => {
-        const c = configModifier.columns(config.columns, state);
-        return () => c;
-      }, [config.columns]);
-      const rows = React.useMemo(() => {
-        const r = configModifier.rows(config.rows, state);
-        return () => r;
-      }, [config.rows]);
-
-      return (
-        <DispatchContext.Provider value={dispatch}>
-          <StateContext.Provider value={state}>
-            <ConfigContext.Provider
-              value={React.useMemo(() => ({ columns, rows }), [columns, rows])}
-            >
-              <renderer.Table>
-                <renderer.Header>
-                  <renderer.HeaderRow>
-                    {columns().map(({ cell, ...rest }: Column) => (
-                      <renderer.HeaderCell {...rest} key={rest.id}>
-                        {cell}
-                      </renderer.HeaderCell>
-                    ))}
-                  </renderer.HeaderRow>
-                </renderer.Header>
-                <renderer.Body>
-                  {rows().map((row: Row) => (
-                    <renderer.Row id={row.id} key={row.id}>
-                      {columns().map((column: Column) => (
-                        <renderer.Cell columnId={column.id} key={column.id}>
-                          {row.cells[column.id]}
-                        </renderer.Cell>
-                      ))}
-                    </renderer.Row>
-                  ))}
-                </renderer.Body>
-              </renderer.Table>
-            </ConfigContext.Provider>
-          </StateContext.Provider>
-        </DispatchContext.Provider>
-      );
-    };
-
-    return {
-      render: (config: Config) => {
-        return <TableWrapper config={config} />;
-      },
-      dispatch,
-      state,
-    } as const;
+  const configModifier = renderer.modifyConfig({
+    columns: (columns) => columns,
+    rows: (rows) => rows,
   });
+
+  const TableWrapper = (props: { config: Config }) => {
+    const { config } = props;
+    const columns = React.useMemo(() => {
+      const c = configModifier.columns(config.columns, state);
+      return () => c;
+    }, [config.columns]);
+    const rows = React.useMemo(() => {
+      const r = configModifier.rows(config.rows, state);
+      return () => r;
+    }, [config.rows]);
+
+    return (
+      <DispatchContext.Provider value={dispatch}>
+        <StateContext.Provider value={state}>
+          <ConfigContext.Provider
+            value={React.useMemo(() => ({ columns, rows }), [columns, rows])}
+          >
+            <renderer.Table>
+              <renderer.Header>
+                <renderer.HeaderRow>
+                  {columns().map(({ cell, ...rest }: Column) => (
+                    <renderer.HeaderCell {...rest} key={rest.id}>
+                      {cell}
+                    </renderer.HeaderCell>
+                  ))}
+                </renderer.HeaderRow>
+              </renderer.Header>
+              <renderer.Body>
+                {rows().map((row: Row) => (
+                  <renderer.Row id={row.id} key={row.id}>
+                    {columns().map((column: Column) => (
+                      <renderer.Cell columnId={column.id} key={column.id}>
+                        {row.cells[column.id]}
+                      </renderer.Cell>
+                    ))}
+                  </renderer.Row>
+                ))}
+              </renderer.Body>
+            </renderer.Table>
+          </ConfigContext.Provider>
+        </StateContext.Provider>
+      </DispatchContext.Provider>
+    );
+  };
+
+  return {
+    render: (config: Config) => {
+      return <TableWrapper config={config} />;
+    },
+    dispatch,
+    state,
+  } as const;
 };
