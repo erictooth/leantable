@@ -1,3 +1,4 @@
+import * as React from "react";
 import { pinnedColumnsReducer } from "./pinnedColumnsReducer";
 import type { Plugin } from "../../core/types/Plugin";
 import type {
@@ -5,6 +6,10 @@ import type {
   PinnedColumnsState,
 } from "./pinnedColumns.type";
 import type { Column } from "../../core/types/Column";
+import clsx from "clsx";
+import { StateContext } from "../../core/context/StateContext";
+import { useSignal } from "../../utils";
+import { createMemo } from "solid-js";
 
 export * from "./pinnedColumns.type";
 
@@ -13,6 +18,40 @@ export const columnPinning =
   (baseRenderer) => {
     return {
       ...baseRenderer,
+      HeaderCell: (props) => {
+        const state = React.useContext<{ pinnedColumns: PinnedColumnsState }>(
+          StateContext as any
+        );
+        const isPinned = useSignal(
+          createMemo(() => state.pinnedColumns.has(props.id))
+        );
+        return (
+          <baseRenderer.HeaderCell
+            {...props}
+            className={clsx(
+              { "leantable__header-cell--pinned": isPinned },
+              props.className
+            )}
+          />
+        );
+      },
+      Cell: (props) => {
+        const state = React.useContext<{ pinnedColumns: PinnedColumnsState }>(
+          StateContext as any
+        );
+        const isPinned = useSignal(
+          createMemo(() => state.pinnedColumns.has(props.columnId))
+        );
+        return (
+          <baseRenderer.Cell
+            {...props}
+            className={clsx(
+              { "leantable__body-cell--pinned": isPinned },
+              props.className
+            )}
+          />
+        );
+      },
       reducer: (state, action) => ({
         ...baseRenderer.reducer(state, action),
         pinnedColumns: pinnedColumnsReducer(state.pinnedColumns, action),
