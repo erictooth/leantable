@@ -10,16 +10,20 @@ clean: ## Clean all build and install artifacts
 demo: dist-esm dist-types
 	@cd demo && pnpm exec parcel ./index.html
 
+dist-cjs: node_modules $(SRC)
+	@pnpm exec swc ./src -d dist-cjs --config module.type=commonjs
+
 dist-esm: node_modules $(SRC)
 	@pnpm exec swc ./src -d dist-esm
 
 dist-types: node_modules $(SRC) tsconfig.json
-	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-types
+	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-cjs
+	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-esm
 
 node_modules: package.json
 	@pnpm install
 
-prepack: dist-esm dist-types
+prepack: dist-cjs dist-esm dist-types
 
 watch: node_modules
 	@pnpm exec chokidar "src/**/*" -c "make dist-esm"

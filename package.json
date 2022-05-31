@@ -22,12 +22,8 @@
   },
   "files": [
     "dist-cjs",
-    "dist-esm",
-    "dist-types"
+    "dist-esm"
   ],
-  "main": "./dist-cjs/index.js",
-  "module": "./dist-esm/index.js",
-  "types": "./dist-types/index.d.ts",
   "exports": {
     "./core": {
       "import": "./dist-esm/core/index.js",
@@ -36,6 +32,10 @@
     "./plugins": {
       "import": "./dist-esm/plugins/index.js",
       "require": "./dist-cjs/plugins/index.js"
+    },
+    "./utils": {
+      "import": "./dist-esm/utils/index.js",
+      "require": "./dist-cjs/utils/index.js"
     }
   },
   "packageManager": "pnpm@7.1.6",
