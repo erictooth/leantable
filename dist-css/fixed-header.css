@@ -1,8 +1,8 @@
-.lean-table__table {
+.leantable__table {
   overflow-y: auto;
 }
 
-.lean-table__header-cell {
+.leantable__header-cell {
   position: sticky;
   top: 0;
   z-index: 100;

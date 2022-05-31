@@ -25,7 +25,7 @@ export const columnSorting =
             {...props}
             className={clsx(
               props.className,
-              "lean-table__header-cell--sortable"
+              "leantable__header-cell--sortable"
             )}
             onClick={handleClick}
           />

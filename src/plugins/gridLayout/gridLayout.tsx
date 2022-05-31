@@ -24,7 +24,7 @@ export const gridLayout = (): Plugin => (baseRenderer) => {
       return (
         <baseRenderer.Table
           {...props}
-          className={clsx(props.className, "lean-table--grid-layout")}
+          className={clsx(props.className, "leantable--grid-layout")}
           style={{ ...gridStyle, ...(props.style || {}) }}
         />
       );
