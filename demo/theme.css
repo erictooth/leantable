@@ -1,29 +1,18 @@
 @import url("../dist-css/grid-layout.css");
 @import url("../dist-css/fixed-header.css");
+@import url("../dist-css/theme-hooks.css");
 
 :root {
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 }
 
-.lean-table__table {
-  border-collapse: collapse;
-}
-
-.lean-table__header-cell {
-  text-align: left;
-}
-
-.lean-table__header-cell,
-.lean-table__body-cell {
-  background: white;
-  padding: 10px;
-  white-space: nowrap;
-}
-
-.lean-table__body-row:hover .lean-table__body-cell {
-  background: #e9f5f9 !important;
-}
-
-.lean-table__body-cell {
-  border-top: 1px solid #eeeef1;
+:root {
+  --leantable--column--gap: 10px;
+  --leantable--header--background: white;
+  --leantable--header--padding-block: 10px;
+  --leantable--header--text-align: left;
+  --leantable--row--background: white;
+  --leantable--row--border: 1px solid #eeeef1;
+  --leantable--row--hover--background: #e9f5f9;
+  --leantable--row--padding-block: 10px;
 }
