@@ -13,7 +13,7 @@ import { RowIdentifier } from "../../core";
 
 export * from "./selectedRows.type";
 
-const checkboxColumnId = "__internal-rowSelection__checkbox";
+export const rowSelectionCheckboxColumnId = "__internal-rowSelection__checkbox";
 
 export const rowSelection =
   (): Plugin<{ selectedRows: SelectedRowsState }, SelectedRowsActions> =>
@@ -27,7 +27,7 @@ export const rowSelection =
         createMemo(() => state.selectedRows.has(props.id))
       );
       return (
-        <baseRenderer.Cell columnId={checkboxColumnId}>
+        <baseRenderer.Cell columnId={rowSelectionCheckboxColumnId}>
           <input
             type="checkbox"
             checked={isChecked}
@@ -52,14 +52,14 @@ export const rowSelection =
     return {
       ...baseRenderer,
       HeaderCell: (props: any) => {
-        if (props.id !== checkboxColumnId) {
+        if (props.id !== rowSelectionCheckboxColumnId) {
           return baseRenderer.HeaderCell(props);
         }
 
         return <baseRenderer.HeaderCell></baseRenderer.HeaderCell>;
       },
       Cell: (props) => {
-        if (props.columnId !== checkboxColumnId) {
+        if (props.columnId !== rowSelectionCheckboxColumnId) {
           return baseRenderer.Cell(props);
         }
         return null;
@@ -85,7 +85,7 @@ export const rowSelection =
           ...modifiers,
           columns: (columns, state) => {
             return [
-              { id: checkboxColumnId, width: "min-content" },
+              { id: rowSelectionCheckboxColumnId, width: "min-content" },
               ...modifiers.columns(columns, state),
             ];
           },
