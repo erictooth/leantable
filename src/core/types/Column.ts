@@ -2,7 +2,7 @@ export type ColumnIdentifier = string;
 
 export type Column<T = unknown> = {
   id: ColumnIdentifier;
-  cell?: JSX.Element;
+  cell?: JSX.Element | string | number;
   width?: string;
 } & T;
 
