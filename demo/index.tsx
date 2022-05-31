@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createTable } from "leantable/dist-esm/core";
+import { createTable } from "../src/core";
 import {
   columnHiding,
   columnSorting,
   gridLayout,
   rowSelection,
   columnPinning,
-} from "leantable/dist-esm/plugins";
+} from "../src/plugins";
 import { SmartResource } from "smart-resource";
 import { useResourceSnapshot } from "smart-resource/dist-esm/react.js";
 import { useMemo } from "react";
