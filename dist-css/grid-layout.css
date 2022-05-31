@@ -1,0 +1,10 @@
+.lean-table__table {
+  display: grid;
+}
+
+.lean-table__header,
+.lean-table__header-row,
+.lean-table__body,
+.lean-table__body-row {
+  display: contents;
+}

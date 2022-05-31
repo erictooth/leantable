@@ -21,6 +21,7 @@
     "url": "https://github.com/erictooth/leantable/issues"
   },
   "files": [
+    "dist-css",
     "dist-cjs",
     "dist-esm"
   ],

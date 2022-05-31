@@ -1,0 +1,5 @@
+.lean-table__header-cell {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
