@@ -60,7 +60,11 @@ export const createTable = <S, A>({ plugins }: { plugins: Plugin[] }) => {
                 {rows().map((row: Row) => (
                   <renderer.Row id={row.id} key={row.id}>
                     {columns().map((column: Column) => (
-                      <renderer.Cell columnId={column.id} key={column.id}>
+                      <renderer.Cell
+                        columnId={column.id}
+                        key={column.id}
+                        rowId={row.id}
+                      >
                         {row.cells[column.id]}
                       </renderer.Cell>
                     ))}
