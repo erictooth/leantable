@@ -1,4 +1,4 @@
-import { splitProps, useContext } from "solid-js";
+import * as React from "react";
 import { DispatchContext } from "../../core/context/DispatchContext";
 import { StateContext } from "../../core/context/StateContext";
 import { selectedRowsReducer } from "./selectedRowsReducer";
@@ -7,17 +7,51 @@ import type {
   SelectedRowsActions,
   SelectedRowsState,
 } from "./selectedRows.type";
+import { useSignal } from "../../utils";
+import { createMemo } from "solid-js";
+import { RowIdentifier } from "../../core";
 
 export * from "./selectedRows.type";
 
-const checkboxColumnId = "_internal-rowSelection__checkbox";
+const checkboxColumnId = "__internal-rowSelection__checkbox";
 
 export const rowSelection =
   (): Plugin<{ selectedRows: SelectedRowsState }, SelectedRowsActions> =>
-  (baseRenderer) => {
+  (baseRenderer: any) => {
+    const RowSelectionCheckbox = (props: { id: RowIdentifier }) => {
+      const state = React.useContext<{ selectedRows: SelectedRowsState }>(
+        StateContext as any
+      );
+      const dispatch = React.useContext(DispatchContext);
+      const isChecked = useSignal(
+        createMemo(() => state.selectedRows.has(props.id))
+      );
+      return (
+        <baseRenderer.Cell columnId={checkboxColumnId}>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={(e) => {
+              if (e.currentTarget.checked) {
+                dispatch({
+                  type: "SELECT_ROWS",
+                  ids: [props.id],
+                });
+              } else {
+                dispatch({
+                  type: "DESELECT_ROWS",
+                  ids: [props.id],
+                });
+              }
+            }}
+          />
+        </baseRenderer.Cell>
+      );
+    };
+
     return {
       ...baseRenderer,
-      HeaderCell: (props) => {
+      HeaderCell: (props: any) => {
         if (props.id !== checkboxColumnId) {
           return baseRenderer.HeaderCell(props);
         }
@@ -30,35 +64,14 @@ export const rowSelection =
         }
         return null;
       },
-      Row: (props) => {
-        const state = useContext<{ selectedRows: SelectedRowsState }>(
-          StateContext as any
-        );
-        const dispatch = useContext(DispatchContext);
-        const [local, others] = splitProps(props, ["children"]);
+      Row: (props: any) => {
+        const { children, ...rest } = props;
+
         return baseRenderer.Row({
-          ...others,
+          ...rest,
           children: [
-            <baseRenderer.Cell columnId={checkboxColumnId}>
-              <input
-                type="checkbox"
-                checked={state.selectedRows.has(props.id)}
-                onChange={(e) => {
-                  if (e.currentTarget.checked) {
-                    dispatch({
-                      type: "SELECT_ROWS",
-                      ids: [props.id],
-                    });
-                  } else {
-                    dispatch({
-                      type: "DESELECT_ROWS",
-                      ids: [props.id],
-                    });
-                  }
-                }}
-              />
-            </baseRenderer.Cell>,
-            local.children,
+            <RowSelectionCheckbox id={props.id} key={props.id} />,
+            children,
           ],
         });
       },

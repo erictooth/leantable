@@ -1,4 +1,3 @@
-import type { JSX } from "solid-js";
 import type { ColumnIdentifier } from "./Column";
 
 export type RowIdentifier = string;

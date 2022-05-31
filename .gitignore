@@ -1,3 +1,5 @@
+.parcel-cache
+.pnpm-debug.log
 demo/package-lock.json
 dist-*
 node_modules

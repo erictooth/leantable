@@ -1,5 +1,3 @@
-import type { JSX } from "solid-js";
-
 export type ColumnIdentifier = string;
 
 export type Column<T = unknown> = {

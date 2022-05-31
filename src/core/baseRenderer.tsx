@@ -1,36 +1,51 @@
-import { splitProps } from "solid-js";
+import * as React from "react";
 import type { TableRenderer } from "./types/TableRenderer";
 
 export const baseRenderer: TableRenderer = {
   Table: (props) => (
-    <table {...props} class={`lean-table__table ${props.class || ""}`} />
+    <table
+      {...props}
+      className={`lean-table__table ${props.className || ""}`}
+    />
   ),
   Header: (props) => (
-    <thead {...props} class={`lean-table__header ${props.class || ""}`} />
+    <thead
+      {...props}
+      className={`lean-table__header ${props.className || ""}`}
+    />
   ),
   Body: (props) => (
-    <tbody {...props} class={`lean-table__body ${props.class || ""}`} />
+    <tbody {...props} className={`lean-table__body ${props.className || ""}`} />
   ),
   HeaderRow: (props) => (
-    <tr {...props} class={`lean-table__header-row ${props.class || ""}`} />
+    <tr
+      {...props}
+      className={`lean-table__header-row ${props.className || ""}`}
+    />
   ),
   HeaderCell: (props) => (
-    <th {...props} class={`lean-table__header-cell ${props.class || ""}`} />
+    <th
+      {...props}
+      className={`lean-table__header-cell ${props.className || ""}`}
+    />
   ),
   Row: (props) => (
-    <tr {...props} class={`lean-table__body-row ${props.class || ""}`} />
+    <tr
+      {...props}
+      className={`lean-table__body-row ${props.className || ""}`}
+    />
   ),
   Cell: (props) => {
-    const [local, others] = splitProps(props, ["class", "columnId"]);
+    const { className, columnId, ...rest } = props;
     return (
-      <td
-        {...others}
-        class={`lean-table__body-row-cell ${local.class || ""}`}
-      />
+      <td {...rest} className={`lean-table__body-cell ${className || ""}`} />
     );
   },
   Footer: (props) => (
-    <tfoot {...props} class={`lean-table__footer ${props.class || ""}`} />
+    <tfoot
+      {...props}
+      className={`lean-table__footer ${props.className || ""}`}
+    />
   ),
   reducer: (state) => state,
   modifyConfig: (configModifiers) => configModifiers,

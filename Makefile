@@ -8,13 +8,13 @@ clean: ## Clean all build and install artifacts
 	@git clean -dfX
 
 demo: dist-esm dist-types
-	@cd demo && pnpx web-dev-server --open --node-resolve --watch 
+	@cd demo && pnpm exec parcel ./index.html
 
 dist-esm: node_modules $(SRC)
-	@node esbuild.mjs
+	@pnpm exec swc ./src -d dist-esm
 
 dist-types: node_modules $(SRC) tsconfig.json
-	@pnpx tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-types
+	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-types
 
 node_modules: package.json
 	@pnpm install
@@ -22,7 +22,7 @@ node_modules: package.json
 prepack: dist-esm dist-types
 
 watch: node_modules
-	@pnpx chokidar "src/**/*" -c "make dist-esm"
+	@pnpm exec chokidar "src/**/*" -c "make dist-esm"
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

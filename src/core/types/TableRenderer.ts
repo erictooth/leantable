@@ -1,6 +1,5 @@
-import type { Component, JSX } from "solid-js";
-import type { ColumnIdentifier, Columns } from "./Column";
-import type { RowIdentifier, Rows } from "./Row";
+import type { Columns } from "./Column";
+import type { Rows } from "./Row";
 
 export type ConfigModifiers<State> = {
   columns: (columns: Columns, state: State) => Columns;
@@ -8,20 +7,14 @@ export type ConfigModifiers<State> = {
 };
 
 export type TableRenderer<State = unknown, Actions = unknown> = {
-  Table: Component<JSX.HTMLAttributes<HTMLTableElement>>;
-  Header: Component<JSX.HTMLAttributes<HTMLTableSectionElement>>;
-  Body: Component<JSX.HTMLAttributes<HTMLTableSectionElement>>;
-  HeaderRow: Component<JSX.HTMLAttributes<HTMLTableRowElement>>;
-  HeaderCell: Component<JSX.HTMLAttributes<HTMLTableCellElement>>;
-  Row: Component<
-    JSX.HTMLAttributes<HTMLTableRowElement> & { id: RowIdentifier }
-  >;
-  Cell: (
-    props: JSX.HTMLAttributes<HTMLTableCellElement> & {
-      columnId: ColumnIdentifier;
-    }
-  ) => JSX.Element;
-  Footer: Component<JSX.HTMLAttributes<HTMLTableSectionElement>>;
+  Table: (props: any) => JSX.Element;
+  Header: (props: any) => JSX.Element;
+  Body: (props: any) => JSX.Element;
+  HeaderRow: (props: any) => JSX.Element;
+  HeaderCell: (props: any) => JSX.Element;
+  Row: (props: any) => JSX.Element;
+  Cell: (props: any) => JSX.Element;
+  Footer: (props: any) => JSX.Element;
   reducer: <StateArg, ActionsArg>(
     state: State & StateArg,
     action: Actions & ActionsArg

@@ -1,29 +1,31 @@
-import { createMemo, useContext } from "solid-js";
+import * as React from "react";
+import clsx from "clsx";
 import { ConfigContext } from "../../core/context/ConfigContext";
 import type { Config } from "../../core/types/Config";
 import type { Plugin } from "../../core/types/Plugin";
 
-const getGridTemplateColumns = (columns: Config["columns"]): string => {
-  return (
-    columns.reduce((accum, column) => {
+const getGridTemplateColumns = (columns: Config["columns"]) => {
+  return {
+    gridTemplateColumns: columns.reduce((accum, column) => {
       return (accum += ` ${column.width || "1fr"}`);
-    }, "grid-template-columns:") + ";"
-  );
+    }, ""),
+  };
 };
 
 export const gridLayout = (): Plugin => (baseRenderer) => {
   return {
     ...baseRenderer,
-    Table: (props) => {
-      const config = useContext(ConfigContext);
-      const columnTemplate = createMemo(() => {
-        return getGridTemplateColumns(config.columns());
-      });
+    Table: (props: any) => {
+      const config = React.useContext(ConfigContext);
+      const gridStyle = React.useMemo(
+        () => getGridTemplateColumns(config.columns()),
+        [config.columns()]
+      );
       return (
         <baseRenderer.Table
           {...props}
-          class={`lean-table--grid-layout ${props.class || ""}`}
-          style={`${columnTemplate()} ${props.style || ""}`}
+          className={clsx(props.className, "lean-table--grid-layout")}
+          style={{ ...gridStyle, ...(props.style || {}) }}
         />
       );
     },

@@ -1,4 +1,5 @@
-import { useContext } from "solid-js";
+import * as React from "react";
+import clsx from "clsx";
 import { DispatchContext } from "../../core/context/DispatchContext";
 import { sortedColumnsReducer } from "./sortedColumnsReducer";
 import type { Plugin } from "../../core/types/Plugin";
@@ -14,20 +15,21 @@ export const columnSorting =
   (baseRenderer) => {
     return {
       ...baseRenderer,
-      Table: (props) => {
+      HeaderCell: (props) => {
+        const dispatch = React.useContext(DispatchContext);
+        const handleClick: EventListener = React.useCallback(() => {
+          dispatch({ type: "SORT_COLUMN_TOGGLE", id: props.id });
+        }, [props.id]);
         return (
-          <baseRenderer.Table
+          <baseRenderer.HeaderCell
             {...props}
-            class={`lean-table--sortable ${props.class || ""}`}
+            className={clsx(
+              props.className,
+              "lean-table__header-cell--sortable"
+            )}
+            onClick={handleClick}
           />
         );
-      },
-      HeaderCell: (props) => {
-        const dispatch = useContext(DispatchContext);
-        const handleClick: EventListener = () => {
-          dispatch({ type: "SORT_COLUMN_TOGGLE", id: props.id });
-        };
-        return <baseRenderer.HeaderCell {...props} onClick={handleClick} />;
       },
       reducer: (state, action) => ({
         ...baseRenderer.reducer(state, action),
