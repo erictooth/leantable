@@ -15,6 +15,11 @@ export * from "./selectedRows.type";
 
 export const rowSelectionCheckboxColumnId = "__internal-rowSelection__checkbox";
 
+const pinnedColumnDefintion = {
+  id: rowSelectionCheckboxColumnId,
+  width: "min-content",
+};
+
 export const rowSelection =
   (): Plugin<{ selectedRows: SelectedRowsState }, SelectedRowsActions> =>
   (baseRenderer: any) => {
@@ -62,18 +67,7 @@ export const rowSelection =
         if (props.columnId !== rowSelectionCheckboxColumnId) {
           return baseRenderer.Cell(props);
         }
-        return null;
-      },
-      Row: (props: any) => {
-        const { children, ...rest } = props;
-
-        return baseRenderer.Row({
-          ...rest,
-          children: [
-            <RowSelectionCheckbox id={props.id} key={props.id} />,
-            children,
-          ],
-        });
+        return <RowSelectionCheckbox id={props.rowId} />;
       },
       reducer: (state, action) => ({
         ...baseRenderer.reducer(state, action),
@@ -84,10 +78,10 @@ export const rowSelection =
         return {
           ...modifiers,
           columns: (columns, state) => {
-            return [
-              { id: rowSelectionCheckboxColumnId, width: "min-content" },
-              ...modifiers.columns(columns, state),
-            ];
+            return modifiers.columns(
+              [pinnedColumnDefintion, ...columns],
+              state
+            );
           },
         };
       },
