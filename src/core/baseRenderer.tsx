@@ -25,7 +25,7 @@ export const baseRenderer: TableRenderer = {
     <tr {...props} className={clsx("leantable__body-row", props.className)} />
   ),
   Cell: (props) => {
-    const { className, columnId, ...rest } = props;
+    const { className, columnId, rowId, ...rest } = props;
     return <td {...rest} className={clsx("leantable__body-cell", className)} />;
   },
   Footer: (props) => (
