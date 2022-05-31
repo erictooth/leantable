@@ -12,6 +12,6 @@
   text-align: var(--leantable--header--text-align);
 }
 
-.leantable__body-row:hover .lean-table__body-cell {
+.leantable__body-row:hover .leantable__body-cell {
   background: var(--leantable--row--hover--background) !important;
 }
