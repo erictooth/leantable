@@ -5,7 +5,7 @@
 		"esModuleInterop": true,
 		"jsx": "react-jsx",
 		"lib": ["DOM", "ES2019"],
-		"moduleResolution": "nodenext",
+		"moduleResolution": "node",
 		"sourceMap": true,
 		"strict": true,
 		"target": "ES2019"

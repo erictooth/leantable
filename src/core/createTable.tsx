@@ -17,7 +17,7 @@ export const createTable = <S, A>({ plugins }: { plugins: Plugin[] }) => {
 	);
 
 	const [state, setState] = createStore(
-		renderer.reducer({} as any, { type: "INITIALIZE" } as any)
+		renderer.reducer({} as any, { type: "INITIALIZE" } as any) as any
 	);
 
 	const dispatch = (action: A) => {
