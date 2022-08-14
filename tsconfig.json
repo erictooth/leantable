@@ -1,13 +1,13 @@
 {
-  "include": ["src/**/*"],
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "lib": ["DOM", "ES2019"],
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "strict": true,
-    "target": "ES2019"
-  }
+	"include": ["src/**/*"],
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"jsx": "react-jsx",
+		"lib": ["DOM", "ES2019"],
+		"moduleResolution": "nodenext",
+		"sourceMap": true,
+		"strict": true,
+		"target": "ES2019"
+	}
 }
