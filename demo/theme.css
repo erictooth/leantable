@@ -3,16 +3,18 @@
 @import url("../dist-css/theme-hooks.css");
 
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+		helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+		sans-serif;
 }
 
 :root {
-  --leantable--column--gap: 10px;
-  --leantable--header--background: white;
-  --leantable--header--padding-block: 10px;
-  --leantable--header--text-align: left;
-  --leantable--row--background: white;
-  --leantable--row--border: 1px solid #eeeef1;
-  --leantable--row--hover--background: #e9f5f9;
-  --leantable--row--padding-block: 10px;
+	--leantable--column--gap: 10px;
+	--leantable--header--background: white;
+	--leantable--header--padding-block: 10px;
+	--leantable--header--text-align: left;
+	--leantable--row--background: white;
+	--leantable--row--border: 1px solid #eeeef1;
+	--leantable--row--hover--background: #e9f5f9;
+	--leantable--row--padding-block: 10px;
 }

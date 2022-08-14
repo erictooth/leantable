@@ -1,9 +1,6 @@
 {
-    "env": {
-        "browser": true
-    },
-    "extends": [
-        "@erictooth/eslint-config",
-        "@erictooth/eslint-config/typescript"
-    ]
+	"env": {
+		"browser": true
+	},
+	"extends": ["@erictooth/eslint-config", "@erictooth/eslint-config/typescript"]
 }

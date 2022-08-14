@@ -1,10 +1,10 @@
 .leantable__table {
-  display: grid;
+	display: grid;
 }
 
 .leantable__header,
 .leantable__header-row,
 .leantable__body,
 .leantable__body-row {
-  display: contents;
+	display: contents;
 }

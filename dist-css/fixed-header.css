@@ -1,9 +1,9 @@
 .leantable__table {
-  overflow-y: auto;
+	overflow-y: auto;
 }
 
 .leantable__header-cell {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+	position: sticky;
+	top: 0;
+	z-index: 100;
 }

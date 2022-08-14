@@ -1,12 +1,12 @@
 {
-  "dependencies": {
-    "leantable": "workspace:*",
-    "react": "17",
-    "react-dom": "17",
-    "smart-resource": "^0.0.4"
-  },
-  "devDependencies": {
-    "parcel": "^2.6.0",
-    "process": "^0.11.10"
-  }
+	"dependencies": {
+		"leantable": "workspace:*",
+		"react": "17",
+		"react-dom": "17",
+		"smart-resource": "^0.0.4"
+	},
+	"devDependencies": {
+		"parcel": "^2.6.0",
+		"process": "^0.11.10"
+	}
 }

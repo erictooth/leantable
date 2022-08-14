@@ -1,17 +1,17 @@
 .leantable__body-cell {
-  background: var(--leantable--row--background);
-  border-top: var(--leantable--row--border);
-  padding-block: var(--leantable--row--padding-block);
-  padding-inline: var(--leantable--column--gap);
+	background: var(--leantable--row--background);
+	border-top: var(--leantable--row--border);
+	padding-block: var(--leantable--row--padding-block);
+	padding-inline: var(--leantable--column--gap);
 }
 
 .leantable__header-cell {
-  background: var(--leantable--header--background);
-  padding-block: var(--leantable--header--padding-block);
-  padding-inline: var(--leantable--column--gap);
-  text-align: var(--leantable--header--text-align);
+	background: var(--leantable--header--background);
+	padding-block: var(--leantable--header--padding-block);
+	padding-inline: var(--leantable--column--gap);
+	text-align: var(--leantable--header--text-align);
 }
 
 .leantable__body-row:hover .leantable__body-cell {
-  background: var(--leantable--row--hover--background) !important;
+	background: var(--leantable--row--hover--background) !important;
 }
