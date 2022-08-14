@@ -30,6 +30,7 @@
       "import": "./dist-esm/core/index.js",
       "require": "./dist-cjs/core/index.js"
     },
+    "./css/*": "./dist-css/*",
     "./plugins": {
       "import": "./dist-esm/plugins/index.js",
       "require": "./dist-cjs/plugins/index.js"
