@@ -39,6 +39,7 @@ importers:
 
   demo:
     specifiers:
+      '@types/react-dom': ^18.0.6
       leantable: workspace:*
       parcel: ^2.7.0
       process: ^0.11.10
@@ -51,6 +52,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       smart-resource: 0.3.5_react@18.2.0
     devDependencies:
+      '@types/react-dom': 18.0.6
       parcel: 2.7.0
       process: 0.11.10
 
@@ -1465,6 +1467,12 @@ packages:
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+    dev: true
+
+  /@types/react-dom/18.0.6:
+    resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
+    dependencies:
+      '@types/react': 18.0.21
     dev: true
 
   /@types/react/18.0.21:

@@ -1,4 +1,3 @@
-import React from "react";
 import { createRoot } from "react-dom/client";
 import { createTable } from "../src/core";
 import {
@@ -11,7 +10,7 @@ import {
 } from "../src/plugins";
 import { SmartResource } from "smart-resource";
 import { useResourceSnapshot } from "smart-resource/dist-esm/react.js";
-import { useMemo } from "react";
+import { StrictMode, useMemo } from "react";
 
 const getUsers = () =>
 	fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json());
@@ -59,7 +58,7 @@ const App = () => {
 };
 
 createRoot(document.getElementById("root")).render(
-	<React.StrictMode>
+	<StrictMode>
 		<App />
-	</React.StrictMode>
+	</StrictMode>
 );
