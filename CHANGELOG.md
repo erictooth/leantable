@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/erictooth/leantable/compare/v0.3.0...v0.3.1) (2022-09-27)
+
+
+### Bug Fixes
+
+* remove accidentally forwarded `id` prop on `HeaderCell` ([00dce68](https://github.com/erictooth/leantable/commit/00dce685a22aacc12daa42482e9670168966a9fb))
+
 # [0.3.0](https://github.com/erictooth/leantable/compare/v0.2.7...v0.3.0) (2022-09-27)
 
 
