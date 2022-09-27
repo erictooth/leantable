@@ -1,13 +1,5 @@
 import { createRoot } from "react-dom/client";
 import { createTable } from "../src/core";
-import {
-	columnHiding,
-	columnSorting,
-	gridLayout,
-	rowSelection,
-	columnPinning,
-	rowSelectionCheckboxColumnId,
-} from "../src/plugins";
 import { SmartResource } from "smart-resource";
 import { useResourceSnapshot } from "smart-resource/dist-cjs/react.js";
 import { StrictMode, useMemo } from "react";
@@ -36,13 +28,7 @@ const columns = [
 ];
 
 const userTable = createTable({
-	plugins: [
-		columnPinning({ initiallyPinned: [rowSelectionCheckboxColumnId, "name"] }),
-		columnHiding(),
-		columnSorting(),
-		rowSelection(),
-		gridLayout(),
-	],
+	plugins: [],
 });
 
 const App = () => {
