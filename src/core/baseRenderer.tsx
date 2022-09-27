@@ -29,13 +29,16 @@ export const baseRenderer: TableRenderer = {
 			/>
 		)
 	) as TableRenderer["HeaderRow"],
-	HeaderCell: forwardRef((props, ref) => (
-		<th
-			{...props}
-			className={clsx("leantable__header-cell", props.className)}
-			ref={ref}
-		/>
-	)) as TableRenderer["HeaderCell"],
+	HeaderCell: forwardRef((props, ref) => {
+		const { id, ...rest } = props;
+		return (
+			<th
+				{...rest}
+				className={clsx("leantable__header-cell", props.className)}
+				ref={ref}
+			/>
+		);
+	}) as TableRenderer["HeaderCell"],
 	Row: forwardRef((props, ref) => (
 		<tr
 			{...props}
