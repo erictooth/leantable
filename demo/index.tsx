@@ -9,10 +9,20 @@ import {
 	rowSelectionCheckboxColumnId,
 } from "../src/plugins";
 import { SmartResource } from "smart-resource";
-import { useResourceSnapshot } from "smart-resource/dist-esm/react.js";
+import { useResourceSnapshot } from "smart-resource/dist-cjs/react.js";
 import { StrictMode, useMemo } from "react";
 
-const getUsers = () =>
+const getUsers = (): Promise<
+	{
+		id: string;
+		name: string;
+		email: string;
+		company: {
+			name: string;
+			catchPhrase: string;
+		};
+	}[]
+> =>
 	fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json());
 
 const usersResource = new SmartResource(getUsers);
@@ -57,7 +67,7 @@ const App = () => {
 	return <div>{userTable.render({ columns, rows })}</div>;
 };
 
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<App />
 	</StrictMode>
