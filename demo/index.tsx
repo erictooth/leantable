@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { createTable } from "../src/core";
 import {
 	columnHiding,
@@ -58,9 +58,8 @@ const App = () => {
 	return <div>{userTable.render({ columns, rows })}</div>;
 };
 
-ReactDOM.render(
+createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<App />
-	</React.StrictMode>,
-	document.getElementById("root")
+	</React.StrictMode>
 );

@@ -3,7 +3,7 @@ SRC = $(shell find src -type f)
 
 .DEFAULT_GOAL := help
 
-.PHONY: clean demo prepack help
+.PHONY: clean demo prepack watch help
 
 clean: ## Clean all build and install artifacts
 	@git clean -dfX
@@ -11,17 +11,17 @@ clean: ## Clean all build and install artifacts
 demo: prepack ## Start a live development server
 	@cd demo && pnpm exec parcel ./index.html
 
-dist-cjs: node_modules $(SRC)
+dist-cjs: node_modules $(SRC) tsconfig.json
 	@pnpm exec swc ./src -d dist-cjs --config module.type=commonjs
 	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-cjs
 	@touch dist-cjs
 
-dist-esm: node_modules $(SRC)
+dist-esm: node_modules $(SRC) tsconfig.json
 	@pnpm exec swc ./src -d dist-esm
 	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-esm
 	@touch dist-esm
 
-node_modules: package.json
+node_modules: package.json pnpm-lock.yaml
 	@pnpm install --frozen-lockfile --prefer-offline --reporter=silent
 	@touch node_modules
 
