@@ -15,7 +15,7 @@ const getGridTemplateColumns = (columns: Config["columns"]) => {
 export const gridLayout = (): Plugin => (baseRenderer) => {
 	return {
 		...baseRenderer,
-		Table: (props: any) => {
+		Table: (props) => {
 			const config = React.useContext(ConfigContext);
 			const gridStyle = React.useMemo(
 				() => getGridTemplateColumns(config.columns()),

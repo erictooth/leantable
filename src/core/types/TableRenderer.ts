@@ -1,5 +1,6 @@
 import type { Columns } from "./Column";
 import type { Rows } from "./Row";
+import type { HTMLProps } from "react";
 
 export type ConfigModifiers<State> = {
 	columns: (columns: Columns, state: State) => Columns;
@@ -7,14 +8,18 @@ export type ConfigModifiers<State> = {
 };
 
 export type TableRenderer<State = unknown, Actions = unknown> = {
-	Table: (props: any) => JSX.Element;
-	Header: (props: any) => JSX.Element;
-	Body: (props: any) => JSX.Element;
-	HeaderRow: (props: any) => JSX.Element;
-	HeaderCell: (props: any) => JSX.Element;
-	Row: (props: any) => JSX.Element;
-	Cell: (props: any) => JSX.Element;
-	Footer: (props: any) => JSX.Element;
+	Table: (props: HTMLProps<HTMLTableElement>) => JSX.Element;
+	Header: (props: HTMLProps<HTMLTableSectionElement>) => JSX.Element;
+	Body: (props: HTMLProps<HTMLTableSectionElement>) => JSX.Element;
+	HeaderRow: (props: HTMLProps<HTMLTableRowElement>) => JSX.Element;
+	HeaderCell: (
+		props: HTMLProps<HTMLTableCellElement> & { id: string }
+	) => JSX.Element;
+	Row: (props: HTMLProps<HTMLTableRowElement>) => JSX.Element;
+	Cell: (
+		props: HTMLProps<HTMLTableCellElement> & { columnId: string; rowId: string }
+	) => JSX.Element;
+	Footer: (props: HTMLProps<HTMLTableSectionElement>) => JSX.Element;
 	reducer: <StateArg, ActionsArg>(
 		state: State & StateArg,
 		action: Actions & ActionsArg

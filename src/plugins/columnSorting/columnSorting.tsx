@@ -17,7 +17,7 @@ export const columnSorting =
 			...baseRenderer,
 			HeaderCell: (props) => {
 				const dispatch = React.useContext(DispatchContext);
-				const handleClick: EventListener = React.useCallback(() => {
+				const handleClick = React.useCallback(() => {
 					dispatch({ type: "SORT_COLUMN_TOGGLE", id: props.id });
 				}, [props.id]);
 				return (
