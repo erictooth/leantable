@@ -1,4 +1,5 @@
-SRC = $(shell find src)
+SHELL := bash
+SRC = $(shell find src -type f)
 
 .DEFAULT_GOAL := help
 
@@ -13,13 +14,16 @@ demo: prepack ## Start a live development server
 dist-cjs: node_modules $(SRC)
 	@pnpm exec swc ./src -d dist-cjs --config module.type=commonjs
 	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-cjs
+	@touch dist-cjs
 
 dist-esm: node_modules $(SRC)
 	@pnpm exec swc ./src -d dist-esm
 	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-esm
+	@touch dist-esm
 
 node_modules: package.json
-	@pnpm install
+	@pnpm install --frozen-lockfile --prefer-offline --reporter=silent
+	@touch node_modules
 
 prepack: dist-cjs dist-esm ## Package for distribution
 
