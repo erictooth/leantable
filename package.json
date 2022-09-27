@@ -1,6 +1,6 @@
 {
 	"name": "leantable",
-	"version": "0.2.7",
+	"version": "0.3.0",
 	"description": "A fast, extensible table component",
 	"keywords": [
 		"table",
