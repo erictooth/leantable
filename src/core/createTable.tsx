@@ -58,7 +58,7 @@ export const createTable = <S, A>({ plugins }: { plugins: Plugin[] }) => {
 							</renderer.Header>
 							<renderer.Body>
 								{rows().map((row: Row) => (
-									<renderer.Row id={row.id} key={row.id}>
+									<renderer.Row {...row.props} id={row.id} key={row.id}>
 										{columns().map((column: Column) => (
 											<renderer.Cell
 												columnId={column.id}
