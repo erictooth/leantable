@@ -1,51 +1,68 @@
 import clsx from "clsx";
-import * as React from "react";
+import { forwardRef, type HTMLProps } from "react";
 import type { TableRenderer } from "./types/TableRenderer";
 
 export const baseRenderer: TableRenderer = {
-	Table: React.forwardRef((props: any, ref) => (
-		<table
-			{...props}
-			className={clsx("leantable__table", props.className)}
-			ref={ref}
-		/>
-	)) as any,
-	Header: React.forwardRef((props: any, ref) => (
+	Table: forwardRef<HTMLTableElement, HTMLProps<HTMLTableElement>>(
+		(props, ref) => (
+			<table
+				{...props}
+				className={clsx("leantable__table", props.className)}
+				ref={ref}
+			/>
+		)
+	) as any,
+	Header: forwardRef<
+		HTMLTableSectionElement,
+		HTMLProps<HTMLTableSectionElement>
+	>((props, ref) => (
 		<thead
 			{...props}
 			className={clsx("leantable__header", props.className)}
 			ref={ref}
 		/>
 	)) as any,
-	Body: React.forwardRef((props: any, ref) => (
-		<tbody
-			{...props}
-			className={clsx("leantable__body", props.className)}
-			ref={ref}
-		/>
-	)) as any,
-	HeaderRow: React.forwardRef((props: any, ref) => (
-		<tr
-			{...props}
-			className={clsx("leantable__header-row", props.className)}
-			ref={ref}
-		/>
-	)) as any,
-	HeaderCell: React.forwardRef((props: any, ref) => (
+	Body: forwardRef<HTMLTableSectionElement, HTMLProps<HTMLTableSectionElement>>(
+		(props, ref) => (
+			<tbody
+				{...props}
+				className={clsx("leantable__body", props.className)}
+				ref={ref}
+			/>
+		)
+	) as any,
+	HeaderRow: forwardRef<HTMLTableRowElement, HTMLProps<HTMLTableRowElement>>(
+		(props, ref) => (
+			<tr
+				{...props}
+				className={clsx("leantable__header-row", props.className)}
+				ref={ref}
+			/>
+		)
+	) as any,
+	HeaderCell: forwardRef<
+		HTMLTableCellElement,
+		HTMLProps<HTMLTableCellElement> & { columnId: string; rowId: string }
+	>((props, ref) => (
 		<th
 			{...props}
 			className={clsx("leantable__header-cell", props.className)}
 			ref={ref}
 		/>
 	)) as any,
-	Row: React.forwardRef((props: any, ref) => (
-		<tr
-			{...props}
-			className={clsx("leantable__body-row", props.className)}
-			ref={ref}
-		/>
-	)) as any,
-	Cell: React.forwardRef((props: any, ref) => {
+	Row: forwardRef<HTMLTableRowElement, HTMLProps<HTMLTableRowElement>>(
+		(props, ref) => (
+			<tr
+				{...props}
+				className={clsx("leantable__body-row", props.className)}
+				ref={ref}
+			/>
+		)
+	) as any,
+	Cell: forwardRef<
+		HTMLTableCellElement,
+		HTMLProps<HTMLTableCellElement> & { columnId: string; rowId: string }
+	>((props, ref) => {
 		const { className, columnId, rowId, ...rest } = props;
 		return (
 			<td
@@ -55,7 +72,10 @@ export const baseRenderer: TableRenderer = {
 			/>
 		);
 	}) as any,
-	Footer: React.forwardRef((props: any, ref) => (
+	Footer: forwardRef<
+		HTMLTableSectionElement,
+		HTMLProps<HTMLTableSectionElement>
+	>((props, ref) => (
 		<tfoot
 			{...props}
 			className={clsx("leantable__footer", props.className)}
