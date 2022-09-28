@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { forwardRef, type HTMLProps } from "react";
 import type { TableRenderer } from "./types/TableRenderer";
 
 export const baseRenderer: TableRenderer = {

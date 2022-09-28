@@ -29,7 +29,7 @@ const columns = [
 ];
 
 const userTable = createTable({
-	plugins: [testPlugin()],
+	plugins: [testPlugin()] as const,
 });
 
 const App = () => {

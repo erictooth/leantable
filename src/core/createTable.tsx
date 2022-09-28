@@ -10,7 +10,11 @@ import type { Plugin } from "./types/Plugin";
 import type { Row } from "./types/Row";
 import type { TableRenderer } from "./types/TableRenderer";
 
-export const createTable = ({ plugins }: { plugins: Plugin[] }) => {
+export const createTable = <P extends readonly Plugin[]>({
+	plugins,
+}: {
+	plugins: P;
+}) => {
 	const renderer: TableRenderer = plugins.reduce(
 		(v: TableRenderer, f) => f(v),
 		baseRenderer
