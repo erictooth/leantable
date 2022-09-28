@@ -61,17 +61,7 @@ export const createTable = <P extends readonly Plugin[]>({
 								</renderer.HeaderRow>
 							</renderer.Header>
 							<renderer.Body>
-								{rows().map((row: Row) => (
-									<renderer.Row {...row.props} key={row.id} row={row}>
-										{columns().map((column: Column) => (
-											<renderer.Cell
-												column={column}
-												key={column.id}
-												row={row}
-											/>
-										))}
-									</renderer.Row>
-								))}
+								{renderer.renderRows(renderer)(columns(), rows())}
 							</renderer.Body>
 						</renderer.Table>
 					</ConfigContext.Provider>

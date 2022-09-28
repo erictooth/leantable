@@ -27,4 +27,7 @@ export type TableRenderer<State = unknown, Actions = unknown> = {
 	modifyConfig: <StateArg>(
 		modifiers: ConfigModifiers<State & StateArg>
 	) => ConfigModifiers<State & StateArg>;
+	renderRows: (
+		renderer: TableRenderer
+	) => (columns: Columns, rows: Rows) => JSX.Element[];
 };

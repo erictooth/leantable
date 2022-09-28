@@ -40,4 +40,13 @@ export const baseRenderer: TableRenderer = {
 	),
 	reducer: (state) => state,
 	modifyConfig: (configModifiers) => configModifiers,
+	renderRows: (renderer) => (columns, rows) => {
+		return rows.map((row) => (
+			<renderer.Row {...row.props} key={row.id} row={row}>
+				{columns.map((column) => (
+					<renderer.Cell column={column} key={column.id} row={row} />
+				))}
+			</renderer.Row>
+		));
+	},
 };
