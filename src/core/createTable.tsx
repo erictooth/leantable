@@ -10,17 +10,17 @@ import type { Plugin } from "./types/Plugin";
 import type { Row } from "./types/Row";
 import type { TableRenderer } from "./types/TableRenderer";
 
-export const createTable = <S, A>({ plugins }: { plugins: Plugin[] }) => {
-	const renderer: TableRenderer<S, A> = plugins.reduce(
-		(v: TableRenderer<any, any>, f) => f(v),
+export const createTable = ({ plugins }: { plugins: Plugin[] }) => {
+	const renderer: TableRenderer = plugins.reduce(
+		(v: TableRenderer, f) => f(v),
 		baseRenderer
 	);
 
 	const [state, setState] = createStore(
-		renderer.reducer({} as any, { type: "INITIALIZE" } as any) as any
+		renderer.reducer({}, { type: "INITIALIZE" }) as any
 	);
 
-	const dispatch = (action: A) => {
+	const dispatch = (action: unknown) => {
 		setState(renderer.reducer(state, action));
 	};
 
