@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { createTable } from "../src/core";
+import { testPlugin } from "../src/plugins";
 import { SmartResource } from "smart-resource";
 import { useResourceSnapshot } from "smart-resource/dist-cjs/react.js";
 import { StrictMode, useMemo } from "react";
@@ -28,7 +29,7 @@ const columns = [
 ];
 
 const userTable = createTable({
-	plugins: [],
+	plugins: [testPlugin()],
 });
 
 const App = () => {
