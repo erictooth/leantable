@@ -16,7 +16,7 @@ export const baseRenderer: TableRenderer = {
 		<tr {...props} className={clsx("leantable__header-row", props.className)} />
 	),
 	HeaderCell: (props) => {
-		const { id, ...rest } = props;
+		const { column, ...rest } = props;
 		return (
 			<th
 				{...rest}
@@ -24,12 +24,17 @@ export const baseRenderer: TableRenderer = {
 			/>
 		);
 	},
-	Row: (props) => (
-		<tr {...props} className={clsx("leantable__body-row", props.className)} />
-	),
+	Row: (props) => {
+		const { className, row, ...rest } = props;
+		return <tr {...rest} className={clsx("leantable__body-row", className)} />;
+	},
 	Cell: (props) => {
-		const { className, columnId, rowId, ...rest } = props;
-		return <td {...rest} className={clsx("leantable__body-cell", className)} />;
+		const { className, column, row, ...rest } = props;
+		return (
+			<td {...rest} className={clsx("leantable__body-cell", className)}>
+				{row.cells[column.id]}
+			</td>
+		);
 	},
 	Footer: (props) => (
 		<tfoot {...props} className={clsx("leantable__footer", props.className)} />

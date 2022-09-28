@@ -50,7 +50,7 @@ export const createTable = <S, A>({ plugins }: { plugins: Plugin[] }) => {
 							<renderer.Header>
 								<renderer.HeaderRow>
 									{columns().map((column: Column) => (
-										<renderer.HeaderCell id={column.id} key={column.id}>
+										<renderer.HeaderCell column={column} key={column.id}>
 											{column.cell}
 										</renderer.HeaderCell>
 									))}
@@ -58,15 +58,13 @@ export const createTable = <S, A>({ plugins }: { plugins: Plugin[] }) => {
 							</renderer.Header>
 							<renderer.Body>
 								{rows().map((row: Row) => (
-									<renderer.Row {...row.props} id={row.id} key={row.id}>
+									<renderer.Row {...row.props} key={row.id} row={row}>
 										{columns().map((column: Column) => (
 											<renderer.Cell
-												columnId={column.id}
+												column={column}
 												key={column.id}
-												rowId={row.id}
-											>
-												{row.cells[column.id]}
-											</renderer.Cell>
+												row={row}
+											/>
 										))}
 									</renderer.Row>
 								))}

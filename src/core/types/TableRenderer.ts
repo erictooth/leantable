@@ -1,5 +1,5 @@
-import type { Columns } from "./Column";
-import type { Rows } from "./Row";
+import type { Column, Columns } from "./Column";
+import type { Row, Rows } from "./Row";
 import type { HTMLProps } from "react";
 
 export type ConfigModifiers<State> = {
@@ -13,11 +13,11 @@ export type TableRenderer<State = unknown, Actions = unknown> = {
 	Body: (props: HTMLProps<HTMLTableSectionElement>) => JSX.Element;
 	HeaderRow: (props: HTMLProps<HTMLTableRowElement>) => JSX.Element;
 	HeaderCell: (
-		props: HTMLProps<HTMLTableCellElement> & { id: string }
+		props: HTMLProps<HTMLTableCellElement> & { column: Column }
 	) => JSX.Element;
-	Row: (props: HTMLProps<HTMLTableRowElement>) => JSX.Element;
+	Row: (props: HTMLProps<HTMLTableRowElement> & { row: Row }) => JSX.Element;
 	Cell: (
-		props: HTMLProps<HTMLTableCellElement> & { columnId: string; rowId: string }
+		props: HTMLProps<HTMLTableCellElement> & { column: Column; row: Row }
 	) => JSX.Element;
 	Footer: (props: HTMLProps<HTMLTableSectionElement>) => JSX.Element;
 	reducer: <StateArg, ActionsArg>(
