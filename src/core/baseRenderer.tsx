@@ -54,10 +54,10 @@ export const baseRenderer: TableRenderer = {
 			</renderer.HeaderRow>
 		);
 	},
-	renderRows: (renderer) => (columns, rows) => {
-		return rows.map((row) => (
+	renderRows: (renderer) => (config) => {
+		return config.rows.map((row) => (
 			<renderer.Row {...row.props} key={row.id} row={row}>
-				{columns.map((column) => (
+				{config.columns.map((column) => (
 					<renderer.Cell column={column} key={column.id} row={row} />
 				))}
 			</renderer.Row>
