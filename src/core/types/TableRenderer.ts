@@ -1,6 +1,7 @@
 import type { Column, Columns } from "./Column";
 import type { Row, Rows } from "./Row";
 import type { HTMLProps } from "react";
+import type { Config } from "./Config";
 
 export type ConfigModifiers<State> = {
 	columns: (columns: Columns, state: State) => Columns;
@@ -30,10 +31,10 @@ export type TableRenderer<State = unknown, Actions = unknown> = {
 	renderColumns: (
 		renderer: TableRenderer
 	) => (columns: Columns) => JSX.Element | JSX.Element[];
-	renderRows: (renderer: TableRenderer) => (config: any) => JSX.Element[];
+	renderRows: (renderer: TableRenderer) => (config: Config) => JSX.Element[];
 	render: (
 		renderer: TableRenderer,
 		state: State,
 		dispatch: any
-	) => (config: any) => JSX.Element;
+	) => (config: Config) => JSX.Element;
 };
