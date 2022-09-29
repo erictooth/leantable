@@ -1,4 +1,7 @@
 import clsx from "clsx";
+import { ConfigContext } from "./context/ConfigContext";
+import { DispatchContext } from "./context/DispatchContext";
+import { StateContext } from "./context/StateContext";
 import type { TableRenderer } from "./types/TableRenderer";
 
 export const baseRenderer: TableRenderer = {
@@ -40,6 +43,17 @@ export const baseRenderer: TableRenderer = {
 	),
 	reducer: (state) => state,
 	modifyConfig: (configModifiers) => configModifiers,
+	renderColumns: (renderer) => (columns) => {
+		return (
+			<renderer.HeaderRow>
+				{columns.map((column) => (
+					<renderer.HeaderCell column={column} key={column.id}>
+						{column.cell}
+					</renderer.HeaderCell>
+				))}
+			</renderer.HeaderRow>
+		);
+	},
 	renderRows: (renderer) => (columns, rows) => {
 		return rows.map((row) => (
 			<renderer.Row {...row.props} key={row.id} row={row}>
@@ -48,5 +62,31 @@ export const baseRenderer: TableRenderer = {
 				))}
 			</renderer.Row>
 		));
+	},
+	render: (renderer, state, dispatch) => (config) => {
+		const configModifier = renderer.modifyConfig({
+			columns: (columns) => columns,
+			rows: (rows) => rows,
+		});
+
+		const columns = configModifier.columns(config.columns, state);
+		const rows = configModifier.rows(config.rows, state);
+
+		return (
+			<DispatchContext.Provider value={dispatch}>
+				<StateContext.Provider value={state as any}>
+					<ConfigContext.Provider value={{ columns, rows }}>
+						<renderer.Table>
+							<renderer.Header>
+								{renderer.renderColumns(renderer)(columns)}
+							</renderer.Header>
+							<renderer.Body>
+								{renderer.renderRows(renderer)(columns, rows)}
+							</renderer.Body>
+						</renderer.Table>
+					</ConfigContext.Provider>
+				</StateContext.Provider>
+			</DispatchContext.Provider>
+		);
 	},
 };
