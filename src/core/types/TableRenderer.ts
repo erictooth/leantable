@@ -30,9 +30,7 @@ export type TableRenderer<State = unknown, Actions = unknown> = {
 	renderColumns: (
 		renderer: TableRenderer
 	) => (columns: Columns) => JSX.Element | JSX.Element[];
-	renderRows: (
-		renderer: TableRenderer
-	) => (columns: Columns, rows: Rows) => JSX.Element[];
+	renderRows: (renderer: TableRenderer) => (config: any) => JSX.Element[];
 	render: (
 		renderer: TableRenderer,
 		state: State,

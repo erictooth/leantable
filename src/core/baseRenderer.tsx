@@ -81,7 +81,7 @@ export const baseRenderer: TableRenderer = {
 								{renderer.renderColumns(renderer)(columns)}
 							</renderer.Header>
 							<renderer.Body>
-								{renderer.renderRows(renderer)(columns, rows)}
+								{renderer.renderRows(renderer)(config)}
 							</renderer.Body>
 						</renderer.Table>
 					</ConfigContext.Provider>
