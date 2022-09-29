@@ -63,30 +63,35 @@ export const baseRenderer: TableRenderer = {
 			</renderer.Row>
 		));
 	},
-	render: (renderer, state, dispatch) => (config) => {
+	render: (renderer, state, dispatch) => {
 		const configModifier = renderer.modifyConfig({
 			columns: (columns) => columns,
 			rows: (rows) => rows,
 		});
 
-		const columns = configModifier.columns(config.columns, state);
-		const rows = configModifier.rows(config.rows, state);
+		return (config) => {
+			const modifiedConfig = {
+				...config,
+				columns: configModifier.columns(config.columns, state),
+				rows: configModifier.rows(config.rows, state),
+			};
 
-		return (
-			<DispatchContext.Provider value={dispatch}>
-				<StateContext.Provider value={state as any}>
-					<ConfigContext.Provider value={{ columns, rows }}>
-						<renderer.Table>
-							<renderer.Header>
-								{renderer.renderColumns(renderer)(columns)}
-							</renderer.Header>
-							<renderer.Body>
-								{renderer.renderRows(renderer)(config)}
-							</renderer.Body>
-						</renderer.Table>
-					</ConfigContext.Provider>
-				</StateContext.Provider>
-			</DispatchContext.Provider>
-		);
+			return (
+				<DispatchContext.Provider value={dispatch}>
+					<StateContext.Provider value={state as any}>
+						<ConfigContext.Provider value={modifiedConfig}>
+							<renderer.Table>
+								<renderer.Header>
+									{renderer.renderColumns(renderer)(modifiedConfig.columns)}
+								</renderer.Header>
+								<renderer.Body>
+									{renderer.renderRows(renderer)(modifiedConfig)}
+								</renderer.Body>
+							</renderer.Table>
+						</ConfigContext.Provider>
+					</StateContext.Provider>
+				</DispatchContext.Provider>
+			);
+		};
 	},
 };
