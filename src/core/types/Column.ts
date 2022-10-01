@@ -1,9 +1,9 @@
 export type ColumnIdentifier = string;
 
-export type Column<T = unknown> = {
+export type Column = {
 	id: ColumnIdentifier;
 	cell?: JSX.Element | string | number;
 	width?: string;
-} & T;
+};
 
-export type Columns<T = unknown> = Column<T>[];
+export type Columns = Column[];

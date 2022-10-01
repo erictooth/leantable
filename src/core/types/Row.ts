@@ -3,10 +3,10 @@ import type { ColumnIdentifier } from "./Column";
 
 export type RowIdentifier = string;
 
-export type Row<T = unknown> = {
+export type Row = {
 	id: RowIdentifier;
 	cells: Record<ColumnIdentifier, JSX.Element | string | number>;
 	props?: HTMLProps<HTMLTableRowElement>;
-} & T;
+};
 
-export type Rows<T = unknown> = Row<T>[];
+export type Rows = Row[];
