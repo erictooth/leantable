@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { createTable } from "../src/core";
-import { testPlugin } from "../src/plugins";
+import { virtualized } from "../src/plugins";
 import { SmartResource } from "smart-resource";
 import { useResourceSnapshot } from "smart-resource/dist-cjs/react.js";
 import { StrictMode, useMemo } from "react";
@@ -23,13 +23,13 @@ const usersResource = new SmartResource(getUsers);
 usersResource.fetch();
 
 const columns = [
-	{ id: "name", cell: "Name", width: "1fr" },
-	{ id: "email", cell: "Email", width: "1fr" },
-	{ id: "body", cell: "Body", width: "2fr" },
+	{ id: "name", cell: "Name", width: "100px" },
+	{ id: "email", cell: "Email", width: "200px" },
+	{ id: "body", cell: "Body", width: "200px" },
 ];
 
 const userTable = createTable({
-	plugins: [testPlugin()] as const,
+	plugins: [virtualized({ rowHeightEstimate: () => 40 })] as const,
 });
 
 const App = () => {
@@ -51,7 +51,7 @@ const App = () => {
 		});
 	}, [users]);
 
-	return <div>{userTable.render({ columns, rows })}</div>;
+	return <div>{userTable.render({ columns, rows, totalRows: 100 })}</div>;
 };
 
 createRoot(document.getElementById("root")!).render(

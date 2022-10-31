@@ -1,0 +1,12 @@
+.leantable__table {
+	display: block;
+}
+.leantable__header,
+.leantable__body {
+	display: grid;
+}
+
+.leantable__header-row,
+.leantable__body-row {
+	display: contents;
+}
