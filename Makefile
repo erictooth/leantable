@@ -12,12 +12,12 @@ demo: prepack ## Start a live development server
 	@cd demo && pnpm exec parcel ./index.html
 
 dist-cjs: node_modules $(SRC) tsconfig.json
-	@pnpm exec swc ./src -d dist-cjs --config module.type=commonjs
+	@pnpm exec swc ./src -d dist-cjs --config module.type=commonjs  --config jsc.transform.react.runtime=automatic --config jsc.target=es2019 --config sourceMaps=true
 	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-cjs
 	@touch dist-cjs
 
 dist-esm: node_modules $(SRC) tsconfig.json
-	@pnpm exec swc ./src -d dist-esm
+	@pnpm exec swc ./src -d dist-esm --config jsc.transform.react.runtime=automatic --config jsc.target=es2020 --config sourceMaps=true
 	@pnpm exec tsc --emitDeclarationOnly --declaration --declarationMap false --declarationDir dist-esm
 	@touch dist-esm
 
