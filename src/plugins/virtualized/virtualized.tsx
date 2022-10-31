@@ -1,6 +1,7 @@
 import { useContext, useMemo } from "react";
-import { ConfigContext, StateContext } from "../../core";
+import { ConfigContext } from "../../core";
 import type { Plugin } from "../../core/types/Plugin";
+import type { Config } from "../../core/types/Config";
 
 import type { VirtualizedState } from "./VirtualizedState.type";
 
