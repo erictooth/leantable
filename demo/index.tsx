@@ -29,7 +29,7 @@ const columns = [
 ];
 
 const userTable = createTable({
-	plugins: [virtualized({ rowHeightEstimate: () => 40 })] as const,
+	plugins: [virtualized({ rowHeight: () => 40 })] as const,
 });
 
 const App = () => {
@@ -51,7 +51,9 @@ const App = () => {
 		});
 	}, [users]);
 
-	return <div>{userTable.render({ columns, rows, totalRows: 100 })}</div>;
+	return (
+		<div>{userTable.render({ columns, rows, totalRows: rows.length })}</div>
+	);
 };
 
 createRoot(document.getElementById("root")!).render(

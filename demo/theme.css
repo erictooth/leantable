@@ -19,3 +19,7 @@
 	--leantable--row--hover--background: #e9f5f9;
 	--leantable--row--padding-block: 10px;
 }
+
+.leantable__table {
+	border-collapse: collapse;
+}
