@@ -1,3 +1,10 @@
+## [0.3.2](https://github.com/erictooth/leantable/compare/v0.3.1...v0.3.2) (2022-10-31)
+
+
+### Bug Fixes
+
+* add missing react swc configuration ([54d42ee](https://github.com/erictooth/leantable/commit/54d42ee36690af7f3b8d9af2839eb99133ceae52))
+
 ## [0.3.1](https://github.com/erictooth/leantable/compare/v0.3.0...v0.3.1) (2022-09-27)
 
 
