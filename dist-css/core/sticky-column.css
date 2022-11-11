@@ -1,0 +1,10 @@
+.leantable-sticky-column {
+	position: sticky;
+	z-index: 200;
+}
+.leantable-sticky-column--left {
+	left: 0;
+}
+.leantable-sticky-column--right {
+	right: 0;
+}

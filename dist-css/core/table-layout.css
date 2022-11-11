@@ -1,0 +1,9 @@
+.leantable--table-layout.leantable__table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.leantable--table-layout .leantable__header-row,
+.leantable--table-layout .leantable__body-row {
+  height: var(--leantable--row--height);
+}

@@ -6,9 +6,7 @@
 		"table",
 		"grid",
 		"react",
-		"component",
-		"solid",
-		"solidjs"
+		"component"
 	],
 	"author": "erictooth",
 	"license": "Apache-2.0",
@@ -35,9 +33,9 @@
 			"import": "./dist-esm/plugins/index.js",
 			"require": "./dist-cjs/plugins/index.js"
 		},
-		"./utils": {
-			"import": "./dist-esm/utils/index.js",
-			"require": "./dist-cjs/utils/index.js"
+		"./react": {
+			"import": "./dist-esm/react/index.js",
+			"require": "./dist-cjs/react/index.js"
 		}
 	},
 	"packageManager": "pnpm@7.12.2",
@@ -46,6 +44,7 @@
 		"@erictooth/semantic-release-npm-github-config": "^1.0.3",
 		"@swc/cli": "^0.1.57",
 		"@swc/core": "^1.3.3",
+		"@types/node": "^18.11.9",
 		"@types/react": "^18.0.21",
 		"chokidar-cli": "^3",
 		"eslint": "^8",
@@ -63,8 +62,8 @@
 		"react": ">= 16.8.0"
 	},
 	"dependencies": {
-		"clsx": "^1.2.1",
-		"solid-js": "^1.5.6"
+		"clsx": "^1.0.0",
+		"rxjs": "^7.0.0"
 	},
 	"release": {
 		"extends": "@erictooth/semantic-release-npm-github-config",

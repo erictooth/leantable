@@ -1,0 +1,18 @@
+.leantable--grid-layout.leantable__table {
+  display: grid;
+  grid-auto-rows: var(--leantable--row--height);
+}
+
+.leantable--grid-layout .leantable__header,
+.leantable--grid-layout .leantable__header-row,
+.leantable--grid-layout .leantable__body,
+.leantable--grid-layout .leantable__body-row {
+  display: contents;
+}
+
+.leantable--grid-layout .leantable__body-cell,
+.leantable--grid-layout .leantable__header-cell {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}

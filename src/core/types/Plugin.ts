@@ -1,11 +1,16 @@
-import type { TableRenderer } from "./TableRenderer";
+import { type Config } from "./Config";
+import { type ComponentProps as DefaultComponentProps } from "./ComponentProps";
 
-export type Plugin<AdditionalState = unknown, AdditionalActions = unknown> = <
-	BaseState,
-	BaseActions
->(
-	baseRenderer: TableRenderer<BaseState, BaseActions>
-) => TableRenderer<
+export type Plugin<
+	AdditionalState = unknown,
+	AdditionalActions = unknown,
+	ComponentProps extends DefaultComponentProps = DefaultComponentProps,
+	Data = unknown
+> = <BaseState, BaseActions>(
+	config: Config<BaseState, BaseActions, Data, ComponentProps>
+) => Config<
 	BaseState & AdditionalState,
-	BaseActions & AdditionalActions
+	BaseActions & AdditionalActions,
+	Data,
+	ComponentProps
 >;

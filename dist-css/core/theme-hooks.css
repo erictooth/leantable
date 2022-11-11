@@ -1,0 +1,25 @@
+.leantable__table {
+  white-space: nowrap;
+}
+
+.leantable__body-cell__content {
+  min-width: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.leantable__body-cell {
+  background: var(--leantable--row--background);
+  border-top: var(--leantable--row--border);
+  padding-inline: var(--leantable--column--gap);
+}
+
+.leantable__header-cell {
+  background: var(--leantable--header--background);
+  padding-inline: var(--leantable--column--gap);
+  text-align: var(--leantable--header--text-align);
+}
+
+.leantable__body-row:hover .leantable__body-cell {
+  background: var(--leantable--row--hover--background) !important;
+}

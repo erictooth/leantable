@@ -1,6 +1,5 @@
-@import url("../dist-css/grid-layout.css");
-@import url("../dist-css/fixed-header.css");
-@import url("../dist-css/theme-hooks.css");
+@import url("../dist-css/core/index.css");
+@import url("../dist-css/plugins/index.css");
 
 :root {
 	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
@@ -16,5 +15,16 @@
 	--leantable--row--background: white;
 	--leantable--row--border: 1px solid #eeeef1;
 	--leantable--row--hover--background: #e9f5f9;
-	--leantable--row--padding-block: 10px;
+	--leantable--row--height: 40px;
+}
+
+body {
+	margin: 0;
+}
+
+.panel {
+	height: calc(100vh - 2em);
+	overflow: auto;
+	margin: 1em;
+	max-width: max-content;
 }

@@ -1,0 +1,12 @@
+.leantable-row-hover-visibility > * {
+	visibility: hidden;
+}
+
+.leantable__body-row:hover .leantable-row-hover-visibility > *,
+.leantable__body-row:focus-visible .leantable-row-hover-visibility > * {
+	visibility: visible;
+}
+
+.leantable-sticky-column--right.leantable-row-hover-visibility {
+	background: none !important;
+}
