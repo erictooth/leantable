@@ -1,4 +1,4 @@
-import { createTableConfig } from "../src/core";
+import { createTable } from "../src/core";
 import {
 	Table,
 	type Column,
@@ -10,11 +10,7 @@ import {
 } from "../src/react";
 import { users, type User } from "./userData/userData";
 
-const userTable = createTableConfig([
-	rowSelection(),
-	columnSorting(),
-	gridLayout(),
-]);
+const userTable = createTable([rowSelection(), columnSorting(), gridLayout()]);
 
 const all_ids = users.map((user) => user.id);
 // userTable.store.state.selectedRows.subscribe(console.log);

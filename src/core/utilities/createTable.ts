@@ -5,7 +5,7 @@ const compose = <R>(fn1: (a: R) => R, ...fns: Array<(a: R) => R>) =>
 
 const identityProps = (props: unknown) => props;
 
-export const createTableConfig = (plugins: any) => {
+export const createTable = (plugins: any) => {
 	//@ts-ignore
 	const composed = compose(...plugins)({
 		modifyColumns: identityProps,
