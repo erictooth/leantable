@@ -1,3 +1,10 @@
+## [0.4.1](https://github.com/erictooth/leantable/compare/v0.4.0...v0.4.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* rename `createTableConfig` to `createTable` ([f05ca2f](https://github.com/erictooth/leantable/commit/f05ca2fc012ab10a0239d5fbd96bf7748b4d727c))
+
 # [0.4.0](https://github.com/erictooth/leantable/compare/v0.3.2...v0.4.0) (2022-11-11)
 
 
