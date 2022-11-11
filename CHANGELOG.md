@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/erictooth/leantable/compare/v0.3.2...v0.4.0) (2022-11-11)
+
+
+### Features
+
+* Simplify plugin architecture ([3d228dc](https://github.com/erictooth/leantable/commit/3d228dc8c432b19face2f3114dbafbf003ae8806))
+
 ## [0.3.2](https://github.com/erictooth/leantable/compare/v0.3.1...v0.3.2) (2022-10-31)
 
 
