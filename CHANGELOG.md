@@ -1,3 +1,10 @@
+## [0.4.5](https://github.com/erictooth/leantable/compare/v0.4.4...v0.4.5) (2022-11-12)
+
+
+### Bug Fixes
+
+* add infinite-scrolling react plugin ([5023ee9](https://github.com/erictooth/leantable/commit/5023ee95d2be6971c0986e1ae30dbe49b7b0b9c9))
+
 ## [0.4.4](https://github.com/erictooth/leantable/compare/v0.4.3...v0.4.4) (2022-11-12)
 
 
