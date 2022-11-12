@@ -23,7 +23,8 @@ export type ComponentProps<Data = unknown> = {
 	};
 	Row: HTMLProps<HTMLTableRowElement> &
 		RowProp<Data> & { getRowProps: <P>(props: P) => P };
-	Cell: HTMLProps<HTMLTableCellElement> & {
-		getCellProps: <P extends HTMLProps<HTMLTableCellElement>>(props: P) => P;
-	};
+	Cell: HTMLProps<HTMLTableCellElement> &
+		ColumnProp & {
+			getCellProps: <P extends HTMLProps<HTMLTableCellElement>>(props: P) => P;
+		};
 };

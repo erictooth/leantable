@@ -41,20 +41,9 @@ const columns: Column<User>[] = [
 	// }),
 	{
 		id: "name",
+		class: "leantable-sticky-column leantable-sticky-column--left",
 		renderHeaderCell: () => "Name",
 		renderCell: (row) => row.data.name,
-		getHeaderCellProps: (props) => {
-			return {
-				...props,
-				className: "leantable-sticky-column leantable-sticky-column--left",
-			};
-		},
-		getCellProps: (props) => {
-			return {
-				...props,
-				className: "leantable-sticky-column leantable-sticky-column--left",
-			};
-		},
 	},
 	{
 		id: "email",
@@ -70,21 +59,17 @@ const columns: Column<User>[] = [
 	},
 	{
 		id: "createdAt",
+		class: "align-right",
 		renderHeaderCell: () => "Created At",
 		renderCell: () => new Date().toDateString(),
 		sortable: true,
 	},
 	{
 		id: "actions",
+		class:
+			"leantable-row-hover-visibility leantable-sticky-column leantable-sticky-column--right",
 		renderHeaderCell: () => null,
 		renderCell: () => <button>Delete</button>,
-		getCellProps: (props) => {
-			return {
-				...props,
-				className:
-					"leantable-row-hover-visibility leantable-sticky-column leantable-sticky-column--right",
-			};
-		},
 	},
 ];
 const getRow = (i: number) => ({ id: users[i].id, data: users[i] });

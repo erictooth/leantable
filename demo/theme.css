@@ -28,3 +28,8 @@ body {
 	margin: 1em;
 	max-width: max-content;
 }
+
+.align-right {
+	justify-content: flex-end;
+	text-align: right;
+}

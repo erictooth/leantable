@@ -21,7 +21,11 @@ export const Table = memo((props: ComponentProps["Table"] & any) => {
 			<BaseRow key={row.id} getRowProps={plugins.getRowProps} row={row}>
 				{modifiedColumns.map((column) => {
 					return (
-						<Cell key={column.id} getCellProps={column.getCellProps}>
+						<Cell
+							key={column.id}
+							column={column}
+							getCellProps={column.getCellProps}
+						>
 							{column.renderCell(row)}
 						</Cell>
 					);
