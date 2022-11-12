@@ -1,3 +1,10 @@
+## [0.4.4](https://github.com/erictooth/leantable/compare/v0.4.3...v0.4.4) (2022-11-12)
+
+
+### Bug Fixes
+
+* add inset shadow on sticky columns, fix z-index on sticky headers ([6160651](https://github.com/erictooth/leantable/commit/61606510effdfac92e2fd69d744b20c985b2620a))
+
 ## [0.4.3](https://github.com/erictooth/leantable/compare/v0.4.2...v0.4.3) (2022-11-12)
 
 
