@@ -1,5 +1,21 @@
 .leantable--fixed-header .leantable__header-cell {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+	position: sticky;
+	top: 0;
+	z-index: 300;
+}
+
+.leantable--fixed-header .leantable__header-cell.leantable-sticky-column {
+	z-index: 350;
+}
+
+.leantable-sticky-column--left::after {
+	box-shadow: inset 10px 0 8px -8px #00000026;
+	position: absolute;
+	top: -1px;
+	right: 0;
+	bottom: 0;
+	width: 30px;
+	transform: translate(100%);
+	content: "";
+	pointer-events: none;
 }
