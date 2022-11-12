@@ -1,3 +1,10 @@
+## [0.4.9](https://github.com/erictooth/leantable/compare/v0.4.8...v0.4.9) (2022-11-12)
+
+
+### Bug Fixes
+
+* allow header and body cells to use the useStoreState hook during render, export `useColumnSortDirection` ([be653fc](https://github.com/erictooth/leantable/commit/be653fc4916b15a621ae41a0ffcd5f568ab73690))
+
 ## [0.4.8](https://github.com/erictooth/leantable/compare/v0.4.7...v0.4.8) (2022-11-12)
 
 
