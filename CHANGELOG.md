@@ -1,3 +1,10 @@
+## [0.4.3](https://github.com/erictooth/leantable/compare/v0.4.2...v0.4.3) (2022-11-12)
+
+
+### Bug Fixes
+
+* cell content wrapper should be a div ([2fa35d5](https://github.com/erictooth/leantable/commit/2fa35d5ab8f5b766213ecbb0b1cb76d91902c7c3))
+
 ## [0.4.2](https://github.com/erictooth/leantable/compare/v0.4.1...v0.4.2) (2022-11-12)
 
 
