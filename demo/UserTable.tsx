@@ -5,12 +5,18 @@ import {
 	rowSelection,
 	rowSelectionColumn,
 	useDispatch,
+	infiniteScrolling,
 	gridLayout,
 	columnSorting,
 } from "../src/react";
 import { users, type User } from "./userData/userData";
 
-const userTable = createTable([rowSelection(), columnSorting(), gridLayout()]);
+const userTable = createTable([
+	rowSelection(),
+	columnSorting(),
+	gridLayout(),
+	infiniteScrolling(() => console.log("scrolled to bottom"), 3),
+]);
 
 const all_ids = users.map((user) => user.id);
 // userTable.store.state.selectedRows.subscribe(console.log);
