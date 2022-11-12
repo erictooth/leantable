@@ -8,12 +8,12 @@ export const watchForLastRow = (
 		return;
 	}
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	const targetRow = bodyEl.children.item(targetIdx)!;
+	const targetEl = bodyEl.children.item(targetIdx)!.children[0]!;
 	const observer = new IntersectionObserver((entries) => {
 		if (entries[0].isIntersecting) {
 			intersected();
 		}
 	});
-	observer.observe(targetRow.children[0]);
-	return () => observer.unobserve(targetRow);
+	observer.observe(targetEl);
+	return () => observer.unobserve(targetEl);
 };
