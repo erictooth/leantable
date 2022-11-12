@@ -1,3 +1,10 @@
+## [0.4.8](https://github.com/erictooth/leantable/compare/v0.4.7...v0.4.8) (2022-11-12)
+
+
+### Bug Fixes
+
+* add `class` column configuration to simplify applying CSS classes to all header and body cells in a column ([e240c2f](https://github.com/erictooth/leantable/commit/e240c2f25eda646b525b2557ec31fa0ccff3e47a))
+
 ## [0.4.7](https://github.com/erictooth/leantable/compare/v0.4.6...v0.4.7) (2022-11-12)
 
 
