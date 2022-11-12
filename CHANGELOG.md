@@ -1,3 +1,10 @@
+## [0.4.7](https://github.com/erictooth/leantable/compare/v0.4.6...v0.4.7) (2022-11-12)
+
+
+### Bug Fixes
+
+* improve consistency of infinite-scrolling plugin ([209e2d8](https://github.com/erictooth/leantable/commit/209e2d85dea7c1487f0b7d3f74a683d3b9e8297e))
+
 ## [0.4.6](https://github.com/erictooth/leantable/compare/v0.4.5...v0.4.6) (2022-11-12)
 
 
