@@ -1,3 +1,10 @@
+## [0.4.2](https://github.com/erictooth/leantable/compare/v0.4.1...v0.4.2) (2022-11-12)
+
+
+### Bug Fixes
+
+* re-export all plugins from react module ([43f5f81](https://github.com/erictooth/leantable/commit/43f5f81598815f32d53dd90137fcc94b84e1ba3b))
+
 ## [0.4.1](https://github.com/erictooth/leantable/compare/v0.4.0...v0.4.1) (2022-11-11)
 
 
