@@ -73,12 +73,12 @@ export const sortedColumns = (
 };
 
 export const columnSortSelector =
-	(column: Column<unknown>) =>
+	(columnId: string) =>
 	(state: { sortedColumns: BehaviorSubject<SortedColumnsState> }) =>
 		state.sortedColumns.pipe(
 			map(
 				(sortedColumns) =>
-					sortedColumns.get(column.id) || SortedColumnDirection.NONE
+					sortedColumns.get(columnId) || SortedColumnDirection.NONE
 			),
 			distinctUntilChanged()
 		);

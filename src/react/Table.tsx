@@ -24,10 +24,9 @@ export const Table = memo((props: ComponentProps["Table"] & any) => {
 						<Cell
 							key={column.id}
 							column={column}
+							row={row}
 							getCellProps={column.getCellProps}
-						>
-							{column.renderCell(row)}
-						</Cell>
+						/>
 					);
 				})}
 			</BaseRow>
@@ -48,9 +47,7 @@ export const Table = memo((props: ComponentProps["Table"] & any) => {
 								key={column.id}
 								column={column}
 								getHeaderCellProps={column.getHeaderCellProps}
-							>
-								{column.renderHeaderCell()}
-							</HeaderCell>
+							/>
 						))}
 					</HeaderRow>
 				</Header>

@@ -31,7 +31,9 @@ export const HeaderCell = (props: ComponentProps["HeaderCell"]) => {
 		<th
 			{...rest}
 			className={clsx("leantable__header-cell", column.class, rest.className)}
-		/>
+		>
+			{column.renderHeaderCell()}
+		</th>
 	);
 };
 
@@ -43,14 +45,16 @@ export const Row = (props: ComponentProps["Row"]) => {
 };
 
 export const Cell = (props: ComponentProps["Cell"]) => {
-	const { column, getCellProps, ...rest } =
+	const { column, row, getCellProps, ...rest } =
 		props.getCellProps?.(props) || props;
 	return (
 		<td
 			{...rest}
 			className={clsx("leantable__body-cell", column.class, rest.className)}
 		>
-			<div className="leantable__body-cell__content">{rest.children}</div>
+			<div className="leantable__body-cell__content">
+				{column.renderCell(row)}
+			</div>
 		</td>
 	);
 };

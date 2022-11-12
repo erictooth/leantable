@@ -7,6 +7,10 @@ import {
 	SortedColumnActions,
 } from "../../../plugins/column-sorting";
 
+export const useColumnSortDirection = (columnId: string) => {
+	return useStoreState(columnSortSelector(columnId));
+};
+
 export const columnSorting =
 	(): Plugin<{ sortedColumns: SortedColumnsState }, SortedColumnActions> =>
 	(config) => {
@@ -21,7 +25,8 @@ export const columnSorting =
 					return {
 						...column,
 						getHeaderCellProps: (props: any) => {
-							const sortValue = useStoreState(columnSortSelector(props.column));
+							const sortDirection = useColumnSortDirection(column.id);
+							console.log(sortDirection);
 							const dispatch = useDispatch();
 							return {
 								...(column.getHeaderCellProps?.({
@@ -29,7 +34,7 @@ export const columnSorting =
 								}) || props),
 								onClick: () =>
 									dispatch({ type: "SORT_COLUMN_TOGGLE", id: props.column.id }),
-								"aria-sort": sortValue,
+								"aria-sort": sortDirection,
 							};
 						},
 					};

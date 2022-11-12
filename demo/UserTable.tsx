@@ -8,6 +8,7 @@ import {
 	infiniteScrolling,
 	gridLayout,
 	columnSorting,
+	useColumnSortDirection,
 } from "../src/react";
 import { users, type User } from "./userData/userData";
 
@@ -52,7 +53,10 @@ const columns: Column<User>[] = [
 	},
 	{
 		id: "role",
-		renderHeaderCell: () => "Role",
+		renderHeaderCell: () => {
+			const sortDirection = useColumnSortDirection("role");
+			return `Role ${sortDirection}`;
+		},
 		renderCell: (row) => row.data.role,
 		width: "max-content",
 		sortable: true,
@@ -60,7 +64,10 @@ const columns: Column<User>[] = [
 	{
 		id: "createdAt",
 		class: "align-right",
-		renderHeaderCell: () => "Created At",
+		renderHeaderCell: () => {
+			const sortDirection = useColumnSortDirection("createdAt");
+			return `Created at ${sortDirection}`;
+		},
 		renderCell: () => new Date().toDateString(),
 		sortable: true,
 	},
