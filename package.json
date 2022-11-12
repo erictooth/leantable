@@ -29,10 +29,6 @@
 			"require": "./dist-cjs/core/index.js"
 		},
 		"./css/*": "./dist-css/*",
-		"./plugins": {
-			"import": "./dist-esm/plugins/index.js",
-			"require": "./dist-cjs/plugins/index.js"
-		},
 		"./react": {
 			"import": "./dist-esm/react/index.js",
 			"require": "./dist-cjs/react/index.js"
