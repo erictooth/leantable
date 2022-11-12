@@ -43,7 +43,7 @@ export const Cell = (props: ComponentProps["Cell"]) => {
 	const { getCellProps, ...rest } = props.getCellProps?.(props) || props;
 	return (
 		<td {...rest} className={clsx("leantable__body-cell", rest.className)}>
-			<span className="leantable__body-cell__content">{rest.children}</span>
+			<div className="leantable__body-cell__content">{rest.children}</div>
 		</td>
 	);
 };
