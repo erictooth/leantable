@@ -1,3 +1,10 @@
+## [0.4.10](https://github.com/erictooth/leantable/compare/v0.4.9...v0.4.10) (2022-11-13)
+
+
+### Bug Fixes
+
+* export `useExternalStoreState` and enable column multi-sorting ([f1a34ee](https://github.com/erictooth/leantable/commit/f1a34eeb9cea41144f6b8d2d60956bd46bd753ad))
+
 ## [0.4.9](https://github.com/erictooth/leantable/compare/v0.4.8...v0.4.9) (2022-11-12)
 
 
