@@ -23,7 +23,8 @@ export class FetchDataSource<Row = unknown> extends DataSource<Row> {
 		if (!this._data) {
 			return null;
 		}
-		return this._data[index];
+		const row = this._data[index] as any;
+		return { id: row.id, data: row };
 	}
 
 	getRowCount() {

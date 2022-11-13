@@ -4,20 +4,20 @@ import {
 } from "../../../../dist-esm/react";
 import { type Photo } from "./photosDataSource";
 
-export const columns: Column<Photo> = [
+export const columns: Column<Photo>[] = [
 	{
 		id: "title",
 		class: "leantable-sticky-column leantable-sticky-column--left",
 		renderHeaderCell: () => "Title",
 		renderCell: (row) => {
-			return row.title;
+			return row.data.title;
 		},
 	},
 	{
 		id: "url",
 		renderHeaderCell: () => "URL",
 		renderCell: (row) => {
-			return row.url;
+			return row.data.url;
 		},
 	},
 	{
