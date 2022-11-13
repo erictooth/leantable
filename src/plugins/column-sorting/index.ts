@@ -1,6 +1,10 @@
 import { BehaviorSubject, map, distinctUntilChanged } from "rxjs";
 import { type Column, type Plugin } from "../../core";
 
+export type ColumnSortingOptions = {
+	multiSort?: boolean;
+};
+
 export enum SortedColumnDirection {
 	"ASC" = "ascending",
 	"DESC" = "descending",
@@ -34,43 +38,45 @@ const toggleDirection = (
 	}
 };
 
-export const sortedColumns = (
-	state: SortedColumnsState = new Map(),
-	action: SortedColumnActions
-): SortedColumnsState => {
-	switch (action.type) {
-		case "SORT_COLUMN": {
-			const next = new Map(); // clone previous state for multi-sort
+export const sortedColumns =
+	(options: ColumnSortingOptions = {}) =>
+	(
+		state: SortedColumnsState = new Map(),
+		action: SortedColumnActions
+	): SortedColumnsState => {
+		switch (action.type) {
+			case "SORT_COLUMN": {
+				const next = new Map(options.multiSort ? state : undefined);
 
-			if (action.direction === SortedColumnDirection.NONE) {
-				next.delete(action.id);
-			} else {
-				next.set(action.id, action.direction);
+				if (action.direction === SortedColumnDirection.NONE) {
+					next.delete(action.id);
+				} else {
+					next.set(action.id, action.direction);
+				}
+
+				return next;
 			}
+			case "SORT_COLUMN_TOGGLE": {
+				const next = new Map(options.multiSort ? state : undefined);
+				const direction = toggleDirection(state.get(action.id));
 
-			return next;
-		}
-		case "SORT_COLUMN_TOGGLE": {
-			const next = new Map();
-			const direction = toggleDirection(state.get(action.id));
+				if (direction === SortedColumnDirection.NONE) {
+					next.delete(action.id);
+				} else {
+					next.set(action.id, direction);
+				}
 
-			if (direction === SortedColumnDirection.NONE) {
-				next.delete(action.id);
-			} else {
-				next.set(action.id, direction);
+				return next;
 			}
-
-			return next;
+			case "SORT_COLUMN_CLEAR": {
+				const next = new Map(options.multiSort ? state : undefined);
+				next.delete(action.id);
+				return next;
+			}
+			default:
+				return state;
 		}
-		case "SORT_COLUMN_CLEAR": {
-			const next = new Map();
-			next.delete(action.id);
-			return next;
-		}
-		default:
-			return state;
-	}
-};
+	};
 
 export const columnSortSelector =
 	(columnId: string) =>
@@ -84,13 +90,15 @@ export const columnSortSelector =
 		);
 
 export const columnSorting =
-	(): Plugin<{ sortedColumns: SortedColumnsState }, SortedColumnActions> =>
+	(
+		options: ColumnSortingOptions
+	): Plugin<{ sortedColumns: SortedColumnsState }, SortedColumnActions> =>
 	(config) => {
 		return {
 			...config,
 			reducers: {
 				...config.reducers,
-				sortedColumns,
+				sortedColumns: sortedColumns(options),
 			} as any,
 		};
 	};

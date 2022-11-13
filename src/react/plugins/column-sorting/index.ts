@@ -5,6 +5,7 @@ import {
 	columnSorting as baseColumnSorting,
 	SortedColumnsState,
 	SortedColumnActions,
+	type ColumnSortingOptions,
 } from "../../../plugins/column-sorting";
 
 export const useColumnSortDirection = (columnId: string) => {
@@ -12,11 +13,13 @@ export const useColumnSortDirection = (columnId: string) => {
 };
 
 export const columnSorting =
-	(): Plugin<{ sortedColumns: SortedColumnsState }, SortedColumnActions> =>
+	(
+		options: ColumnSortingOptions = {}
+	): Plugin<{ sortedColumns: SortedColumnsState }, SortedColumnActions> =>
 	(config) => {
 		return {
 			...config,
-			...baseColumnSorting()(config),
+			...baseColumnSorting(options)(config),
 			modifyColumns: (columns: any) =>
 				columns.map((column: any) => {
 					if (!column.sortable) {

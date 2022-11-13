@@ -17,13 +17,7 @@ export const useDispatch = () => {
 	return store.dispatch;
 };
 
-export const useStoreState = (selector: any) => {
-	const store = useContext(StoreContext);
-
-	if (!store) {
-		throw new Error("Store is not defined");
-	}
-
+export const useExternalStoreState = (store: Store, selector: any) => {
 	const subject = useRef(selector(store.state));
 	const [value, setValue] = useState(subject.current.value);
 	useEffect(() => {
@@ -33,4 +27,14 @@ export const useStoreState = (selector: any) => {
 		return () => subscription.unsubscribe();
 	}, []);
 	return value;
+};
+
+export const useStoreState = (selector: any) => {
+	const store = useContext(StoreContext);
+
+	if (!store) {
+		throw new Error("Store is not defined");
+	}
+
+	return useExternalStoreState(store, selector);
 };

@@ -1,11 +1,12 @@
 import { useMemo, useState } from "react";
-import { createTable } from "../../../../dist-esm/core/index.js";
+import { createTable } from "../../../../dist-esm/core";
 import {
 	columnSorting,
 	infiniteScrolling,
 	rowSelection,
 	Table,
-} from "../../../../dist-esm/react/index.js";
+	useExternalStoreState,
+} from "../../../../dist-esm/react";
 import { createUsersDataSource } from "./usersDataSource";
 import { useFetchDataSource } from "../../utils/useFetchDataSource";
 import { columns } from "./columns";
@@ -17,7 +18,7 @@ export const UsersTable = () => {
 		() =>
 			createTable([
 				rowSelection(),
-				columnSorting(),
+				columnSorting({ multiSort: false }),
 				infiniteScrolling(() => {
 					setVisibleRows((prev) => prev + 50);
 				}, 3),
@@ -25,7 +26,11 @@ export const UsersTable = () => {
 		[]
 	);
 	const { rowCount, getRow } = useFetchDataSource(photosDataSource);
-
+	const sortedColumns = useExternalStoreState(
+		userTable.store,
+		(state) => state.sortedColumns
+	);
+	console.log(sortedColumns);
 	return (
 		<div className="panel">
 			<Table
