@@ -8,8 +8,12 @@ SRC = $(shell find src -type f)
 clean: ## Clean all build and install artifacts
 	@git clean -dfX
 
-demo: prepack ## Start a live development server
+demo: prepack demo/node_modules ## Start a live development server
 	@cd demo && pnpm exec parcel ./src/index.html
+
+demo/node_modules: demo/package.json demo/pnpm-lock.yaml
+	@cd demo && pnpm install --frozen-lockfile --prefer-offline --reporter=silent
+	@cd demo && touch node_modules
 
 dist-cjs: node_modules $(SRC) tsconfig.json
 	@pnpm exec swc ./src -d dist-cjs --config module.type=commonjs  --config jsc.transform.react.runtime=automatic --config jsc.target=es2019 --config sourceMaps=true

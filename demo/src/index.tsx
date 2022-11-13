@@ -1,8 +1,9 @@
 import { createRoot } from "react-dom/client";
 import { PhotosTable } from "./tables/PhotosTable/PhotosTable";
+import { UsersTable } from "./tables/UsersTable/UsersTable";
 
 const App = () => {
-	return <PhotosTable />;
+	return <UsersTable />;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
