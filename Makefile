@@ -9,7 +9,7 @@ clean: ## Clean all build and install artifacts
 	@git clean -dfX
 
 demo: prepack ## Start a live development server
-	@cd demo && pnpm exec parcel ./index.html
+	@cd demo && pnpm exec parcel ./src/index.html
 
 dist-cjs: node_modules $(SRC) tsconfig.json
 	@pnpm exec swc ./src -d dist-cjs --config module.type=commonjs  --config jsc.transform.react.runtime=automatic --config jsc.target=es2019 --config sourceMaps=true

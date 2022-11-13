@@ -1,5 +1,5 @@
-@import url("../dist-css/core/index.css");
-@import url("../dist-css/plugins/index.css");
+@import url("../../dist-css/core/index.css");
+@import url("../../dist-css/plugins/index.css");
 
 :root {
 	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
