@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { createTable } from "../../../../dist-esm/core";
 import {
 	columnSorting,
@@ -10,10 +10,11 @@ import {
 import { createUsersDataSource } from "./usersDataSource";
 import { useFetchDataSource } from "../../utils/useFetchDataSource";
 import { columns } from "./columns";
+import { formatSortQuery } from "../../utils/formatSortQuery";
 
 export const UsersTable = () => {
 	const [visibleRows, setVisibleRows] = useState(50);
-	const photosDataSource = useMemo(() => createUsersDataSource(), []);
+	const usersDataSource = useMemo(() => createUsersDataSource(), []);
 	const userTable = useMemo(
 		() =>
 			createTable([
@@ -25,12 +26,14 @@ export const UsersTable = () => {
 			]),
 		[]
 	);
-	const { rowCount, getRow } = useFetchDataSource(photosDataSource);
+	const { rowCount, getRow } = useFetchDataSource(usersDataSource);
 	const sortedColumns = useExternalStoreState(
 		userTable.store,
 		(state) => state.sortedColumns
 	);
-	console.log(sortedColumns);
+	useEffect(() => {
+		usersDataSource.setSort(formatSortQuery(sortedColumns));
+	}, [sortedColumns]);
 	return (
 		<div className="panel">
 			<Table

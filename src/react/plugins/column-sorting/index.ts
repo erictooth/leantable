@@ -29,7 +29,6 @@ export const columnSorting =
 						...column,
 						getHeaderCellProps: (props: any) => {
 							const sortDirection = useColumnSortDirection(column.id);
-							console.log(sortDirection);
 							const dispatch = useDispatch();
 							return {
 								...(column.getHeaderCellProps?.({

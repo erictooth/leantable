@@ -9,7 +9,7 @@ clean: ## Clean all build and install artifacts
 	@git clean -dfX
 
 demo: prepack demo/node_modules ## Start a live development server
-	@cd demo && pnpm exec parcel ./src/index.html
+	@cd demo && pnpm exec parcel ./src/index.html --no-cache
 
 demo/node_modules: demo/package.json demo/pnpm-lock.yaml
 	@cd demo && pnpm install --frozen-lockfile --prefer-offline --reporter=silent

@@ -7,11 +7,13 @@ export const columns: Column<User>[] = [
 		class: "leantable-sticky-column leantable-sticky-column--left",
 		renderHeaderCell: () => "Name",
 		renderCell: (row) => row.data.name,
+		sortable: true,
 	},
 	{
 		id: "email",
 		renderHeaderCell: () => "Email",
 		renderCell: (row) => row.data.email,
+		sortable: true,
 	},
 	{
 		id: "role",
@@ -31,7 +33,6 @@ export const columns: Column<User>[] = [
 			return `Created at ${sortDirection}`;
 		},
 		renderCell: () => new Date().toDateString(),
-		sortable: true,
 	},
 	{
 		id: "actions",
