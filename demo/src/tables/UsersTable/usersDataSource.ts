@@ -1,4 +1,5 @@
 import { FetchDataSource } from "../../DataSource/FetchDataSource";
+import { ArrowIPCDataSource } from "../../DataSource/ArrowIPCDataSource";
 
 export type User = {
 	id: string;
@@ -7,5 +8,8 @@ export type User = {
 	role: "admin" | "basic";
 };
 
+// export const createUsersDataSource = () =>
+// 	new FetchDataSource<User>("/data/userData.json");
+
 export const createUsersDataSource = () =>
-	new FetchDataSource<User>("/data/userData.json");
+	new ArrowIPCDataSource<User>("/data/userData.arrow");
