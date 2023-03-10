@@ -1,3 +1,10 @@
+## [0.4.11](https://github.com/erictooth/leantable/compare/v0.4.10...v0.4.11) (2023-03-10)
+
+
+### Bug Fixes
+
+* trigger release to publish removed console.log in column sorting plugin ([bce2c75](https://github.com/erictooth/leantable/commit/bce2c75335200357c22be2c34e3768251eda25ce))
+
 ## [0.4.10](https://github.com/erictooth/leantable/compare/v0.4.9...v0.4.10) (2022-11-13)
 
 
