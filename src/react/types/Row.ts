@@ -1,3 +1,3 @@
 import { type Row } from "../../core";
 
-export { Row };
+export { type Row };
