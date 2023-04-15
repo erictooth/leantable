@@ -1,3 +1,10 @@
+## [0.4.12](https://github.com/erictooth/leantable/compare/v0.4.11...v0.4.12) (2023-04-15)
+
+
+### Bug Fixes
+
+* added missing `type` keyword on `Row` type export ([a0f2de9](https://github.com/erictooth/leantable/commit/a0f2de94ed99afca90c05b7b5f32cd7d9b4adeaf))
+
 ## [0.4.11](https://github.com/erictooth/leantable/compare/v0.4.10...v0.4.11) (2023-03-10)
 
 
