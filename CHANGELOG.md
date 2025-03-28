@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/erictooth/leantable/compare/v0.4.12...v0.5.0) (2025-03-28)
+
+
+### Features
+
+* add keyboard support for sortable header cells ([827ff37](https://github.com/erictooth/leantable/commit/827ff377cef87d6e3f3ace73ea2492bb00b832ee))
+
 ## [0.4.12](https://github.com/erictooth/leantable/compare/v0.4.11...v0.4.12) (2023-04-15)
 
 
