@@ -20,6 +20,9 @@ importers:
       react:
         specifier: '>=18'
         version: 19.1.0
+      react-compiler-runtime:
+        specifier: 19.1.0-rc.1
+        version: 19.1.0-rc.1(react@19.1.0)
     devDependencies:
       '@babel/cli':
         specifier: ^7.27.1
@@ -42,9 +45,6 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
-      react-compiler-runtime:
-        specifier: 19.1.0-rc.1
-        version: 19.1.0-rc.1(react@19.1.0)
       typescript:
         specifier: 5.8.3
         version: 5.8.3
