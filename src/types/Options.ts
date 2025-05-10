@@ -1,12 +1,8 @@
-import type { ReactNode } from "react";
 import type { Plugin } from "./Plugin.ts";
+import type { Column } from "./Column.ts";
 
 export type Options = {
-	columns: {
-		id: string;
-		renderCell: (rowIndex: number, rowId: string) => ReactNode;
-		renderHeaderCell: () => ReactNode;
-	}[];
+	columns: Column[];
 	getRowId?: (rowIndex: number) => string;
 	plugins?: Plugin[];
 	rowCount: number;
