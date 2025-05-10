@@ -20,4 +20,4 @@ runs:
         cache: "pnpm"
 
     - name: Install go-task
-        run: npm install --global @go-task/cli
+      run: npm install --global @go-task/cli
