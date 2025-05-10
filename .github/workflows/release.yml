@@ -1,37 +1,38 @@
 name: Release
 on:
-  push:
-    branches:
-      - main
-jobs:
-  test:
-    name: Test & Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - uses: pnpm/action-setup@v2
-      - name: Verify build succeeds
-        run: make prepack
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        default: true
+        description: Dry run (for debugging / verification purposes of the release)
+        required: true
+        type: boolean
 
+permissions:
+  contents: read
+
+jobs:
   release:
     name: Release
-    needs: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - uses: pnpm/action-setup@v2
-      - name: Install node_modules
-        run: make node_modules
+
+      - uses: "./.github/actions/setup"
+
+      - name: Build
+        run: task build
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm exec semantic-release
+        run: pnpm dlx semantic-release@24.2.3 ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}

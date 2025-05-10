@@ -1,0 +1,20 @@
+{
+	"presets": [
+		[
+			"@babel/preset-typescript",
+			{
+				"rewriteImportExtensions": true
+			}
+		],
+		["@babel/preset-react", { "runtime": "automatic" }]
+	],
+	"plugins": [
+		["module:@preact/signals-react-transform"],
+		[
+			"babel-plugin-react-compiler",
+			{
+				"target": "18"
+			}
+		]
+	]
+}

@@ -2,12 +2,24 @@
 	"include": ["src/**/*"],
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
+		"allowImportingTsExtensions": true,
+		"composite": true,
+		"emitDeclarationOnly": true,
 		"esModuleInterop": true,
+		"isolatedModules": true,
 		"jsx": "react-jsx",
 		"lib": ["DOM", "ES2019"],
-		"moduleResolution": "node",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"noFallthroughCasesInSwitch": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+		"outDir": "./dist-types",
+		"rewriteRelativeImportExtensions": true,
+		"rootDir": "./src",
 		"sourceMap": true,
+		"skipLibCheck": true,
 		"strict": true,
-		"target": "ES2019"
+		"verbatimModuleSyntax": true
 	}
 }

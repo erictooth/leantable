@@ -1,0 +1,28 @@
+version: "3"
+
+run: once
+
+tasks:
+  build:
+    deps:
+      - "build:js"
+      - "build:types"
+  "build:js":
+    cmd: pnpm exec babel ./src --out-dir dist --extensions .ts,.tsx
+    deps: [node_modules]
+    generates: [./dist/**/*]
+    sources: [./src/**/*]
+  "build:types":
+    cmd: pnpm exec tsc
+    deps: [node_modules]
+    generates: [./dist-types/**/*]
+    sources: [./src/**/*, ./tsconfig.json]
+  clean:
+    cmd: git clean -dfX
+  node_modules:
+    cmd: pnpm install --frozen-lockfile --prefer-offline
+    generates:
+      - node_modules/**
+      - demo/node_modules/**
+    sources:
+      - ./pnpm-lock.yaml
