@@ -21,3 +21,4 @@ runs:
 
     - name: Install go-task
       run: npm install --global @go-task/cli
+      shell: bash
