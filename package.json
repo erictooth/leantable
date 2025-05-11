@@ -25,7 +25,8 @@
 		".": {
 			"import": "./dist/index.js",
 			"types": "./dist-types/index.d.ts"
-		}
+		},
+		"./css/*": "./dist-css/*"
 	},
 	"dependencies": {
 		"@preact/signals-react": "^3",

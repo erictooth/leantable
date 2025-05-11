@@ -1,6 +1,6 @@
 @property --lt-row-height {
 	syntax: "*";
-	inherits: false;
+	inherits: true;
 	initial-value: max-content;
 }
 
