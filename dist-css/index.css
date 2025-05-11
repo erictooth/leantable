@@ -1,0 +1,51 @@
+@property --lt-row-height {
+	syntax: "*";
+	inherits: false;
+	initial-value: max-content;
+}
+
+.lt-base {
+	th {
+		position: relative;
+	}
+}
+
+.lt-grid {
+	display: grid;
+
+	grid-template-rows: max-content 1fr;
+	grid-template-columns: repeat(1000, min-content);
+
+	thead,
+	tbody,
+	tr {
+		display: grid;
+		grid-column: 1 / -1;
+		grid-template-columns: subgrid;
+	}
+
+	thead,
+	tbody {
+		grid-auto-rows: var(--lt-row-height);
+	}
+
+	th,
+	td {
+		display: inline-flex;
+		align-items: center;
+	}
+}
+
+.lt-virtual {
+	tr {
+		will-change: transform;
+	}
+}
+
+.lt-sticky-header {
+	thead {
+		position: sticky;
+		top: 0;
+		z-index: 250;
+	}
+}

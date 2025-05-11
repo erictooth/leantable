@@ -2,5 +2,6 @@
 .task
 dist-*
 dist
+!dist-css
 node_modules
 tsconfig.tsbuildinfo
