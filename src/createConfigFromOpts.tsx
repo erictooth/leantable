@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { computed } from "@preact/signals-react";
+import { computed, type ReadonlySignal } from "@preact/signals-react";
 import { Body } from "./components/Body.tsx";
 import { Header } from "./components/Header.tsx";
 import { HeaderCell } from "./components/HeaderCell.tsx";
@@ -10,12 +10,16 @@ import type { Options } from "./types/Options.ts";
 import type { InternalColumn } from "./types/InternalColumn.ts";
 import type { RenderedRow } from "./types/RenderedRow.ts";
 
-export const createConfigFromOpts = (opts: Options) => {
-	const columns = computed(() => opts.columns satisfies InternalColumn[]);
-
+export const createConfigFromOpts = (opts: {
+	columns: ReadonlySignal<Options["columns"]>;
+	rowCount: ReadonlySignal<Options["rowCount"]>;
+	plugins?: Options["plugins"];
+	getRowId?: Options["getRowId"];
+}) => {
+	const columns = computed(() => opts.columns.value as InternalColumn[]);
 	const renderedRows = computed(() =>
 		Array.from(
-			{ length: opts.rowCount },
+			{ length: opts.rowCount.value },
 			(_, rowIndex) =>
 				[
 					rowIndex,
