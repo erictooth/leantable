@@ -14,7 +14,7 @@
 	display: grid;
 
 	grid-template-rows: max-content 1fr;
-	grid-template-columns: repeat(1000, min-content);
+	grid-template-columns: repeat(1000, max-content);
 
 	thead,
 	tbody,
