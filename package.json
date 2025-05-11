@@ -17,6 +17,7 @@
 	"homepage": "https://github.com/erictooth/leantable",
 	"files": [
 		"dist",
+		"dist-css",
 		"dist-types"
 	],
 	"type": "module",
@@ -28,7 +29,6 @@
 	},
 	"dependencies": {
 		"@preact/signals-react": "^3",
-		"clsx": "^2",
 		"react-compiler-runtime": "19.1.0-rc.1"
 	},
 	"peerDependencies": {

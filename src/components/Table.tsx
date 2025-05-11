@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { useConfigContext } from "../configContext.ts";
 import { forwardRef, type HTMLAttributes } from "react";
 
@@ -8,7 +7,7 @@ export const Table = forwardRef<
 >(function Table(props, ref) {
 	const config = useConfigContext();
 	return (
-		<table {...props} className={clsx("leantable", props.className)} ref={ref}>
+		<table {...props} ref={ref}>
 			<config.Header />
 			<config.Body renderedRows={config.renderedRows} />
 		</table>
